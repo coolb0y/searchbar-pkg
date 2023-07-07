@@ -4,5 +4,3 @@ package-lock.json
 ./package-lock.json
 ./gitignore
 gitignore
-build
-./build
