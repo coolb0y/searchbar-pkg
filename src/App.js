@@ -147,7 +147,7 @@ function App() {
   return (
 
    
-    <div style={{textAlign:"left",marginTop:"20px",marginBottom:'0' ,display:"inline-block" ,flex:"1"} }>
+    <div style={{textAlign:"left",marginTop:"0px",marginBottom:'0' ,display:"inline-block" ,flex:"1"} }>
     
     
   
@@ -240,8 +240,8 @@ function App() {
               boxShadow: "none"
               
             }}
-          debounce={500}
-          showVoiceSearch={true}
+           debounce={500}
+           showVoiceSearch={true}
            customQuery={customQueryfn}
             fuzziness={fuzzinessval}
             queryFormat={queryFormatval}
@@ -266,7 +266,7 @@ function App() {
 
 
 
-             <div >
+             <div className="searchdiv">
              <input
             type="checkbox"
             checked={allMatch}
@@ -277,9 +277,9 @@ function App() {
               marginRight: "5px",
               display:"inline"
             
-          }}
+           }}
             onChange={handleAllMatchChange}
-          />
+           />
            <label htmlFor="allMatch" style={{ display:"inline" , marginBottom:"2px" ,marginRight:'10px' }}>Match All Terms</label>
           
 
@@ -294,18 +294,21 @@ function App() {
               marginRight: "5px",
               display:"inline"
             
-          }}
+           }}
             onChange={handlePhraseMatchChange}
-          />
+           />
 
            <label htmlFor="phraseMatch" style={{ display:"inline" , marginBottom:"2px" }}>Match Full Phrase</label>
 
-          <a href="www.google.com" style={{display:"inline", textDecoration:"none" ,paddingLeft: "30rem",color:"#3ea9e6"}}><h5 style={{display:"inline"}}>Search Help</h5></a>
-          <a href="www.google.com" style={{display:"inline", textDecoration:"none",paddingLeft: "40px",color:"#3ea9e6",marginRight:"0"}}><h5 style={{display:"inline"}}>Advanced Search</h5></a>
+           <a href="www.google.com" style={{display:"inline", textDecoration:"none" ,paddingLeft: "29rem",color:"#3ea9e6"}}><h5 style={{display:"inline"}}>Search Help</h5></a>
+           <a href="www.google.com" style={{display:"inline", textDecoration:"none",paddingLeft: "40px",color:"#3ea9e6",marginRight:"0"}}><h5 style={{display:"inline"}}>Advanced Search</h5></a>
+           
+          
+           
            </div>
+          
 
-
-          <ReactiveList
+           <ReactiveList
             componentId="results"
             dataField="title"
             size={6}
@@ -348,6 +351,7 @@ function App() {
                 }
                 else{
                 return  (
+                  
                     <ResultList key={item._id}>
                       
                       {/* <ResultList.Image
