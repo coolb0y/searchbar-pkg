@@ -2,12 +2,14 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-
+path.join(__dirname, 'build/images/SearchPageLogo.png');
 path.join(__dirname, 'build/index.html');
 path.join(__dirname, 'build/asset-manifest.json');
-path.join(__dirname, 'build/static/js/main.4360c1a2.js');
-path.join(__dirname, 'build/static/js/main.4360c1a2.js.map');
-path.join(__dirname, 'build/static/js/main.4360c1a2.js.LICENSE.txt');
+path.join(__dirname, 'build/static/js/main.94da1dd8.js');
+path.join(__dirname, 'build/static/js/main.94da1dd8.js.map');
+path.join(__dirname, 'build/static/js/main.94da1dd8.js.LICENSE.txt');
+path.join(__dirname, 'build/static/css/main.153cc392.css');
+path.join(__dirname, 'build/static/css/main.153cc392.css.map');
 
 app.use(express.static(path.join(__dirname, 'build')));
 
