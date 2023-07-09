@@ -19,6 +19,7 @@ function App() {
   const [queryFormatval,setQueryFormatval]=useState("or");
   const [allMatch, setAllMatch] = useState(false);
   const [phraseMatch, setPhraseMatch] = useState(false);
+  const [isSearchEmpty, setIsSearchEmpty] = useState(true);
 
   function generateLinkString(url) {
     const parts = url.split('/');
@@ -32,12 +33,12 @@ function App() {
     setAllMatch(event.target.checked);
     console.log(allMatch)
     if(allMatch){
-      console.log(allMatch,'All Match fn')
+     // console.log(allMatch,'All Match fn')
       setFuzzinessval(2);
       setQueryFormatval("or");
     }
     else{
-      console.log(allMatch,'All Match fn1')
+      //console.log(allMatch,'All Match fn1')
         setFuzzinessval(0);
         setQueryFormatval("and");
     }
@@ -46,21 +47,23 @@ function App() {
 
   const handlePhraseMatchChange = (event) => {
     setPhraseMatch(event.target.checked);
-    console.log(phraseMatch,'phraseMatch fn')
+  //  console.log(phraseMatch,'phraseMatch fn')
   
   };
 
 
   const customQueryfn = (value, props) => {
     console.log(value,'value')
-    console.log(phraseMatch,'phrase matchoutside')
+   // console.log(phraseMatch,'phrase matchoutside')
+   
     if (value.trim() !== "") {
+      setIsSearchEmpty(false);
       if (phraseMatch) {
-        console.log(phraseMatch,'phrase matchoutside inside')
+       // console.log(phraseMatch,'phrase matchoutside inside')
         // Use the phrase match
         //setFuzzinessval(0);
         //setQueryFormatval("and");
-        console.log("phrase match",phraseMatch)
+       // console.log("phrase match",phraseMatch)
         return {
           "query": {
             "bool": {
@@ -92,7 +95,7 @@ function App() {
 
       else {
         // Use the default query
-        console.log("default query match",phraseMatch)
+       // console.log("default query match",phraseMatch)
         return {
           "query": {
             "bool": {
@@ -166,22 +169,29 @@ function App() {
      
       <div style={{ display: "flex", flexDirection: "row" }}>
      
-        <div
-          style={{
-            display: "block",
-            flexDirection: "column",
-            width: "30%",
-            margin: "15px",
-            maxHeight: '700px',
-            maxWidth: '350px',
-            //overflowY: 'scroll',
-            marginTop: '30px',
-           
-            paddingRight: '15px',
-          }}
-          >   
-         <img src={process.env.PUBLIC_URL + '/images/SearchPageLogo.png'} alt="Chipster" width="350rem" style={{paddingRight:"15px",paddingBottom:"30px"}}/>
-
+          <div
+      style={{
+        display: "block",
+        flexDirection: "column",
+        width: "30%",
+        margin: "15px",
+        maxHeight: '700px',
+        maxWidth: '350px',
+        marginTop: '30px',
+        paddingRight: '15px',
+      }}
+    >   
+      <img
+        src={process.env.PUBLIC_URL + '/images/SearchPageLogo.png'}
+        alt="Chipster"
+        style={{
+          width: "100%",
+          maxWidth: "350px",
+          height: "auto",
+        
+          paddingBottom: "30px",
+        }}
+      />
          <div>
 
          
@@ -233,11 +243,11 @@ function App() {
          
          </div>
         
-        <div style={{ display: "flex", flexDirection: "column", width: "66%" }}>
+         <div style={{ display: "flex", flexDirection: "column", width: "66%" }}>
           <DataSearch
             style={{
               marginTop: "35px",
-              boxShadow: "none"
+              boxShadow: "none",
               
             }}
            debounce={500}
@@ -266,49 +276,61 @@ function App() {
 
 
 
-             <div className="searchdiv">
-             <input
-            type="checkbox"
-            checked={allMatch}
-            style={{
-              width: "19px",
-              height: "19px",
-              marginLeft: "1px",
-              marginRight: "5px",
-              display:"inline"
-            
-           }}
-            onChange={handleAllMatchChange}
-           />
-           <label htmlFor="allMatch" style={{ display:"inline" , marginBottom:"2px" ,marginRight:'10px' }}>Match All Terms</label>
-          
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  type="checkbox"
+                  checked={allMatch}
+                  style={{ width: "19px", height: "19px", marginLeft: "10px", marginRight: "5px" }}
+                  onChange={handleAllMatchChange}
+                />
+                <label htmlFor="allMatch" style={{ marginBottom: "2px", marginRight: "10px" }}>Match All Terms</label>
 
-          
-            <input
-            type="checkbox"
-            checked={phraseMatch}
-            style={{
-              width: "19px",
-              height: "19px",
-              marginLeft: "1px",
-              marginRight: "5px",
-              display:"inline"
-            
-           }}
-            onChange={handlePhraseMatchChange}
-           />
+                <input
+                  type="checkbox"
+                  checked={phraseMatch}
+                  style={{ width: "19px", height: "19px", marginLeft: "1px", marginRight: "5px" }}
+                  onChange={handlePhraseMatchChange}
+                />
 
-           <label htmlFor="phraseMatch" style={{ display:"inline" , marginBottom:"2px" }}>Match Full Phrase</label>
+                <label htmlFor="phraseMatch" style={{ marginBottom: "2px" }}>Match Full Phrase</label>
+              </div>
 
-           <a href="www.google.com" style={{display:"inline", textDecoration:"none" ,paddingLeft: "27rem",color:"#3ea9e6"}}><h5 style={{display:"inline"}}>Search Help</h5></a>
-           <a href="www.google.com" style={{display:"inline", textDecoration:"none",paddingLeft: "40px",color:"#3ea9e6",marginRight:"0"}}><h5 style={{display:"inline"}}>Advanced Search</h5></a>
-           
-          
-           
-           </div>
+              <div>
+                <a href="www.google.com" style={{ textDecoration: "none", color: "#3ea9e6", marginRight: "10px" }}><h5 style={{ display: "inline" }}>Search Help</h5></a>
+                <a href="www.google.com" style={{ textDecoration: "none", color: "#3ea9e6" }}><h5 style={{ display: "inline",marginRight:"15px" }}>Advanced Search</h5></a>
+              </div>
+            </div>
+
           
 
            <ReactiveList
+           // showResultStats={false}
+          
+          // onQueryChange={
+          //   function(prevQuery, nextQuery) {
+          //     if ('match_all' in nextQuery['query']) {
+          //       setIsSearchEmpty(true);
+          //       nextQuery['query'] = { match_none: {} }
+          //     }
+          //   }
+          // }
+          renderNoResults={() => {
+            if (isSearchEmpty) {
+              return (
+                <div style={{ paddingLeft: "10px" }}>
+                  <h3>Please type in the search bar to search</h3>
+                </div>
+              );
+            } else {
+              return (
+                <div style={{ paddingLeft: "10px", fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,Helvetica Neue, sans-serif" }}>
+                  <h4>No Results Found</h4>
+                  <p>Sorry, we couldn't find any results for your search query.</p>
+                </div>
+              );
+            }
+          }}
             componentId="results"
             dataField="title"
             size={6}
@@ -325,7 +347,7 @@ function App() {
                 {data.map((item) => {
 
                   let urlnew=generateLinkString(item.url)
-                  console.log(urlnew,'urlnew');
+                  //console.log(urlnew,'urlnew');
 
                   //console.log(item)
                 if(item.filetype==="image"){
