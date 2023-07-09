@@ -150,7 +150,7 @@ function App() {
   return (
 
    
-    <div style={{textAlign:"left",marginTop:"0px",marginBottom:'0' ,display:"inline-block" ,flex:"1"} }>
+    <div style={{textAlign:"left",marginTop:"0px",marginBottom:'0' ,display:"block" } }>
     
     
   
@@ -243,7 +243,7 @@ function App() {
          
          </div>
         
-         <div style={{ display: "flex", flexDirection: "column", width: "66%" }}>
+         <div style={{ display: "flex", flexDirection: "column", width: "66%",minWidth:"66%" }}>
           <DataSearch
             style={{
               marginTop: "35px",
@@ -305,16 +305,16 @@ function App() {
           
 
            <ReactiveList
-           // showResultStats={false}
+          //  showResultStats={false}
           
-          // onQueryChange={
-          //   function(prevQuery, nextQuery) {
-          //     if ('match_all' in nextQuery['query']) {
-          //       setIsSearchEmpty(true);
-          //       nextQuery['query'] = { match_none: {} }
-          //     }
-          //   }
-          // }
+          onQueryChange={
+            function(prevQuery, nextQuery) {
+              if ('match_all' in nextQuery['query']) {
+                setIsSearchEmpty(true);
+                nextQuery['query'] = { match_none: {} }
+              }
+            }
+          }
           renderNoResults={() => {
             if (isSearchEmpty) {
               return (
