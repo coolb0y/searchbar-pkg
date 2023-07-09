@@ -174,13 +174,13 @@ function App() {
             margin: "15px",
             maxHeight: '700px',
             maxWidth: '350px',
-            overflowY: 'scroll',
+            //overflowY: 'scroll',
             marginTop: '30px',
            
             paddingRight: '15px',
           }}
           >   
-         <img src={process.env.PUBLIC_URL + '/images/SearchPageLogo.png'} alt="Chipster" width="350rem" />
+         <img src={process.env.PUBLIC_URL + '/images/SearchPageLogo.png'} alt="Chipster" width="350rem" style={{paddingRight:"15px",paddingBottom:"30px"}}/>
 
          <div>
 
@@ -191,7 +191,7 @@ function App() {
             dataField="filetype"
             title="Filter by File Type"
             //fielddata={false}
-            size={5}
+            size={4}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
             }}
@@ -203,13 +203,13 @@ function App() {
             dataField="baseurl"
             title="Filter by Website"
             fielddata={true}
-            size={5}
+            size={4}
             
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
             }}
           />
-          
+       
 
       
           <SingleRange
@@ -300,7 +300,7 @@ function App() {
 
            <label htmlFor="phraseMatch" style={{ display:"inline" , marginBottom:"2px" }}>Match Full Phrase</label>
 
-           <a href="www.google.com" style={{display:"inline", textDecoration:"none" ,paddingLeft: "29rem",color:"#3ea9e6"}}><h5 style={{display:"inline"}}>Search Help</h5></a>
+           <a href="www.google.com" style={{display:"inline", textDecoration:"none" ,paddingLeft: "27rem",color:"#3ea9e6"}}><h5 style={{display:"inline"}}>Search Help</h5></a>
            <a href="www.google.com" style={{display:"inline", textDecoration:"none",paddingLeft: "40px",color:"#3ea9e6",marginRight:"0"}}><h5 style={{display:"inline"}}>Advanced Search</h5></a>
            
           
