@@ -42,7 +42,7 @@ function App() {
 
   const handleAllMatchChange = (event) => {
     setAllMatch(event.target.checked);
-    console.log(allMatch)
+   // console.log(allMatch)
     if(allMatch){
      // console.log(allMatch,'All Match fn')
       setFuzzinessval(2);
@@ -64,9 +64,9 @@ function App() {
 
 
   const customQueryfn = (value, props) => {
-    console.log(value,'value');
+    //console.log(value,'value');
     setSearchText(value)
-    console.log(searchText,'searchText')
+   // console.log(searchText,'searchText')
    // console.log(phraseMatch,'phrase matchoutside')
     
     if (value.trim() !== "") {
