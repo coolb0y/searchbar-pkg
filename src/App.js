@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ReactiveBase,
   DataSearch,
@@ -20,6 +20,17 @@ function App() {
   const [allMatch, setAllMatch] = useState(false);
   const [phraseMatch, setPhraseMatch] = useState(false);
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
+  const [viewCount, setViewCount] = useState(false);
+  const [searchText,setSearchText]=useState("");
+  useEffect(() => {
+   
+    if(searchText.trim() !== "" && searchText.length > 0) {
+      setViewCount(true);
+    }
+    else{
+      setViewCount(false);
+    }
+  }, [searchText]);
 
   function generateLinkString(url) {
     const parts = url.split('/');
@@ -53,9 +64,11 @@ function App() {
 
 
   const customQueryfn = (value, props) => {
-    console.log(value,'value')
+    console.log(value,'value');
+    setSearchText(value)
+    console.log(searchText,'searchText')
    // console.log(phraseMatch,'phrase matchoutside')
-   
+    
     if (value.trim() !== "") {
       setIsSearchEmpty(false);
       if (phraseMatch) {
@@ -200,7 +213,7 @@ function App() {
             componentId="filetypefilter"
             dataField="filetype"
             title="Filter by File Type"
-            //fielddata={false}
+            showCount={viewCount}
             size={4}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
@@ -214,7 +227,8 @@ function App() {
             title="Filter by Website"
             fielddata={true}
             size={4}
-            
+            showCount={viewCount}
+           
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
             }}
@@ -311,6 +325,7 @@ function App() {
             function(prevQuery, nextQuery) {
               if ('match_all' in nextQuery['query']) {
                 setIsSearchEmpty(true);
+                
                 nextQuery['query'] = { match_none: {} }
               }
             }
