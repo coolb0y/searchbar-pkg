@@ -365,27 +365,30 @@ function App() {
                   //console.log(urlnew,'urlnew');
 
                   //console.log(item)
-                if(item.filetype==="image"){
-                
-                  <ReactiveList.ResultCardsWrapper>
+                  if (item.filetype === "image") {
                     
-                      <ResultCard key={item._id}>
-                    <ResultCard.Image
-                      style={{
-                        backgroundSize: "cover",
-                        backgroundImage: `url(${item.url})`
-                      }}
-                    />
-                    <ResultCard.Title
-                      dangerouslySetInnerHTML={{
-                        __html: item.tags
-                      }}
-                    />
-                    
-                  </ResultCard>
+                    return (
+                      // <ReactiveList.ResultCardsWrapper key={item._id}>
+                      //   <ResultCard>
+                      //     <ResultCard.Image
+                      //       src={item.url}
+                           
+                      //     />
+                      //     <ResultCard.Title
+                      //       dangerouslySetInnerHTML={{
+                      //         __html: item.tags
+                      //       }}
+                      //     />
+                      //   </ResultCard>
+                      // </ReactiveList.ResultCardsWrapper>
+                      <div style={{ borderRadius: "8px", display: "inline-block",borderBottom: "1px solid #efefef", marginLeft:"10px",padding:"5px" }}>
+                      <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
 
-                  </ReactiveList.ResultCardsWrapper>
-                }
+                    </div>
+                    
+                    
+                    );
+                  }
                 else{
                 return  (
                   
