@@ -90,7 +90,8 @@ function App() {
                       "filedetails^4",
                       "artists^3",
                       "album^2",
-                      "imgtags^1"
+                      "imgtags^1",
+                      "filename^1"
                     ]
                   }
                 }
@@ -119,7 +120,7 @@ function App() {
                       {
                         "multi_match": {
                           "query": value,
-                          "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1"],
+                          "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "best_fields",
                           "operator": queryFormatval,
                           "fuzziness": "AUTO",
@@ -128,7 +129,7 @@ function App() {
                       {
                         "multi_match": {
                           "query": value,
-                          "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1"],
+                          "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "phrase",
                           "operator": queryFormatval
                         }
@@ -136,7 +137,7 @@ function App() {
                       {
                         "multi_match": {
                           "query": value,
-                          "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1"],
+                          "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "phrase_prefix",
                           "operator": queryFormatval
                         }
@@ -278,7 +279,8 @@ function App() {
               // "fileDetails.autosuggest"
               "artists",
               "album",
-              "imgtags"
+              "imgtags",
+              "filename"
             ]}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
@@ -366,7 +368,7 @@ function App() {
 
                   //console.log(item)
                   if (item.filetype === "image") {
-                    
+                    console.log(item)
                     return (
                       // <ReactiveList.ResultCardsWrapper key={item._id}>
                       //   <ResultCard>
@@ -381,12 +383,25 @@ function App() {
                       //     />
                       //   </ResultCard>
                       // </ReactiveList.ResultCardsWrapper>
-                      <div style={{ borderRadius: "8px", display: "inline-block",borderBottom: "1px solid #efefef", marginLeft:"10px",padding:"5px" }}>
+                      <div style={{ display: "flex", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px" }}>
                       <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
-
+                      <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <h4 style={{ marginRight: "5px" }}>File Name:</h4>
+                          <p>{item.filename?item.filename:"File Name is Not Available"}</p>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <h4 style={{ marginRight: "5px" }}>Image Producer:</h4>
+                          <p>{item.imgtags?item.imgtags:"No Information Available"}</p>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <h4 style={{ marginRight: "5px" }}>Image Title:</h4>
+                          <p>{item.title?item.title:"No Information Available"}</p>
+                        </div>
+                      </div>
                     </div>
                     
-                    
+                          
                     );
                   }
                 else{
