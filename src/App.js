@@ -14,6 +14,7 @@ import "./styles.css";
 import { useState } from "react";
 
 function App() {
+  const [numberOfResult,setNumberOfResult] = useState(6);
   const indexname = process.env.REACT_APP_INDEX_NAME;
   const [fuzzinessval,setFuzzinessval]=useState(2);
   const [queryFormatval,setQueryFormatval]=useState("or");
@@ -31,6 +32,16 @@ function App() {
       setViewCount(false);
     }
   }, [searchText]);
+
+  
+
+  const handleRangeChange = (event) => {
+    const newValue = parseInt(event.target.value);
+    setNumberOfResult(newValue);
+    // Perform actions with the new value
+    console.log("Current value: " + newValue);
+  };
+
 
   function generateLinkString(url) {
     const parts = url.split('/');
@@ -236,7 +247,8 @@ function App() {
           />
        
 
-      
+          <label for="points" style={{fontWeight: "bold"}}>Result Number on Page</label>
+          <input type="range" id="points" name="points" min="2" max="20" value={numberOfResult} onChange={handleRangeChange} />
           <SingleRange
             componentId="sizefilter"
             dataField="filesize"
@@ -350,7 +362,7 @@ function App() {
           }}
             componentId="results"
             dataField="title"
-            size={6}
+            size={numberOfResult}
             pagination={true}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
