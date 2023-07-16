@@ -304,7 +304,7 @@ function App() {
 
 
 
-            <SelectedFilters showClearAll={true} clearAllLabel="Clear filters" />
+            
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
            
               <div style={{ display: "flex", alignItems: "center" }}>
@@ -332,7 +332,7 @@ function App() {
               </div>
             </div>
 
-          
+            <SelectedFilters showClearAll={true} clearAllLabel="Clear filters" />
 
            <ReactiveList
           //  showResultStats={false}
