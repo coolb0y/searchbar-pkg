@@ -5,9 +5,9 @@ import {
   MultiList,
   ReactiveList,
   SingleRange,
-  ResultCard,
   ResultList,
-  SingleList
+  SelectedFilters
+
 } from "@appbaseio/reactivesearch";
 import "./styles.css";
 
@@ -219,7 +219,7 @@ function App() {
       />
          <div>
 
-         
+       
           <MultiList
             showSearch={true}
             componentId="filetypefilter"
@@ -277,6 +277,7 @@ function App() {
               boxShadow: "none",
               
             }}
+           showClear={true}
            debounce={500}
            showVoiceSearch={true}
            customQuery={customQueryfn}
@@ -303,8 +304,9 @@ function App() {
 
 
 
-
+            <SelectedFilters showClearAll={true} clearAllLabel="Clear filters" />
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+           
               <div style={{ display: "flex", alignItems: "center" }}>
                 <input
                   type="checkbox"
@@ -399,8 +401,8 @@ function App() {
                       <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
                       <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>File Name:</h4>
-                          <p>{item.filename?item.filename:"File Name is Not Available"}</p>
+                          <h4 style={{ marginRight: "5px" }}>Image Url:</h4>
+                          <p>{urlnew}</p>
                         </div>
                         <div style={{ display: "flex", alignItems: "center" }}>
                           <h4 style={{ marginRight: "5px" }}>Image Producer:</h4>
