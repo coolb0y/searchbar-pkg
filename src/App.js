@@ -398,21 +398,23 @@ function App() {
                       //   </ResultCard>
                       // </ReactiveList.ResultCardsWrapper>
                       <div style={{ display: "flex", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px" }}>
+                        <a href={item.url} style={{display: "flex", borderRadius: "8px",textDecoration: "none", color:"#424242"}}>
                       <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
                       <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Url:</h4>
-                          <p>{urlnew}</p>
+                          <h4 style={{ marginRight: "5px" }}>Image Base Url:</h4>
+                          <p>{item.baseurl}</p>
                         </div>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Producer:</h4>
-                          <p>{item.imgtags?item.imgtags:"No Information Available"}</p>
+                          <h4 style={{ marginRight: "5px" }}>File Name:</h4>
+                          <p>{item.filename?item.filename:"No Information Available"}</p>
                         </div>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Title:</h4>
-                          <p>{item.title?item.title:"No Information Available"}</p>
+                          <h4 style={{ marginRight: "5px" }}>File Size:</h4>
+                          <p>{item.filesize?item.filesize/1000 +"KB":"No Information Available"}</p>
                         </div>
                       </div>
+                      </a>
                     </div>
                     
                           
