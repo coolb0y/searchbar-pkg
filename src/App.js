@@ -248,7 +248,8 @@ function App() {
        
 
           <label for="points" style={{fontWeight: "bold"}}>Result Number on Page</label>
-          <input type="range" id="points" name="points" min="2" max="20" value={numberOfResult} onChange={handleRangeChange} />
+          <input type="range" id="points" name="points" min="2" max="20" value={numberOfResult} onChange={handleRangeChange} style={{display:"inline"}}/>
+          {viewCount?<p style={{display:"inline",marginLeft:"8.6rem",color:"#9b9b9b",marginTop:"0px"}}>{numberOfResult}</p>:<p></p>}
           <SingleRange
             componentId="sizefilter"
             dataField="filesize"
