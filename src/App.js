@@ -76,8 +76,9 @@ function App() {
 
   const customQueryfn = (value, props) => {
     //console.log(value,'value');
-    setSearchText(value)
-   // console.log(searchText,'searchText')
+    const sortterm = value.substring(0,100);
+    setSearchText(sortterm)
+   console.log(searchText,'searchText')
    // console.log(phraseMatch,'phrase matchoutside')
     
     if (value.trim() !== "") {
@@ -403,16 +404,20 @@ function App() {
                       <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
                       <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Base Url:</h4>
+                          <h4 style={{ marginRight: "5px" }}>Web Site:</h4>
                           <p>{item.baseurl}</p>
                         </div>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>File Name:</h4>
+                          <h4 style={{ marginRight: "5px" }}>Image Name:</h4>
                           <p>{item.filename?item.filename:"No Information Available"}</p>
                         </div>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>File Size:</h4>
-                          <p>{item.filesize?item.filesize/1000 +"KB":"No Information Available"}</p>
+                          <h4 style={{ marginRight: "5px" }}>Image Size:</h4>
+                          <p>{item.filesize?Math.round(item.filesize/1000) +"KB":"No Information Available"}</p>
+                        </div>
+                         <div style={{ display: "flex", alignItems: "center" }}>
+                          <h4 style={{ marginRight: "5px" }}>Image Dimensions:</h4>
+                          <p>{(item.length && item.width)?item.length+"px * "+item.width+"px":"No Information Available"}</p>
                         </div>
                       </div>
                       </a>
