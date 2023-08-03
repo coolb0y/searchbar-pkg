@@ -25,11 +25,10 @@ function App() {
   const [splitDone,setSplitDone] = useState(false);
   const [nextWord, setNextWord] = useState("");
   const [searchText,setSearchText]=useState("");
+  let imageItems = [];
+
   useEffect(() => {
    
-
-
-
     if(searchText.trim() !== "" && searchText.length > 0) {
       setViewCount(true);
 
@@ -402,54 +401,95 @@ function App() {
            return (
               
               <ReactiveList.ResultListWrapper>
-                {data.map((item) => {
+                {data.map((item,index) => {
 
                   let urlnew=generateLinkString(item.url)
                   //console.log(urlnew,'urlnew');
-
+                 
                   //console.log(item)
                   if (item.filetype === "image") {
-                    console.log(item)
+                   // console.log(item)
+                
+                   const shouldAddItem = imageItems.length<3
+                  
+
+                   if(shouldAddItem){
+                  
+                     imageItems.push(item)
+                    }
+
+                   const shouldRenderImage = imageItems.length>=3 || index ===data.length-1
+                   let imageData = imageItems;
+                  
+                   if(shouldRenderImage) {
+                   
+                    imageItems = [];
                     return (
-                      // <ReactiveList.ResultCardsWrapper key={item._id}>
-                      //   <ResultCard>
-                      //     <ResultCard.Image
-                      //       src={item.url}
-                           
-                      //     />
-                      //     <ResultCard.Title
-                      //       dangerouslySetInnerHTML={{
-                      //         __html: item.tags
-                      //       }}
-                      //     />
-                      //   </ResultCard>
-                      // </ReactiveList.ResultCardsWrapper>
-                      <div style={{ display: "flex", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px" }}>
-                        <a href={item.url} style={{display: "flex", borderRadius: "8px",textDecoration: "none", color:"#424242"}}>
-                      <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
-                      <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Web Site:</h4>
-                          <p>{item.baseurl}</p>
-                        </div>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Name:</h4>
-                          <p>{item.filename?item.filename:"No Information Available"}</p>
-                        </div>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Size:</h4>
-                          <p>{item.filesize?Math.round(item.filesize/1000) +"KB":"No Information Available"}</p>
-                        </div>
-                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ marginRight: "5px" }}>Image Dimensions:</h4>
-                          <p>{(item.length && item.width)?item.length+"px * "+item.width+"px":"No Information Available"}</p>
-                        </div>
+                      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+                        {imageData.map((imageVal) => (
+                          <div key={imageVal.url} style={{ display: "flex", flexDirection: "column", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px", width: "15rem" }}>
+                            <a href={imageVal.url} style={{ display: "flex", borderRadius: "8px", textDecoration: "none", color: "#424242" }}>
+                              <img src={imageVal.url} style={{ width: "100%", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
+                            </a>
+                            <div style={{ marginTop: "10px" }}>
+                              <div style={{ display: "flex", alignItems: "center" }}>
+                                <h4 style={{ marginRight: "5px" }}>Web Site:</h4>
+                                <p>{imageVal.baseurl}</p>
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center" }}>
+                                <h4 style={{ marginRight: "5px" }}>Image Name:</h4>
+                                <p>{imageVal.filename ? imageVal.filename : "No Information Available"}</p>
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center" }}>
+                                <h4 style={{ marginRight: "5px" }}>Image Size:</h4>
+                                <p>{imageVal.filesize ? Math.round(imageVal.filesize / 1000) + "KB" : "No Information Available"}</p>
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center" }}>
+                                <h4 style={{ marginRight: "5px" }}>Image Dimensions:</h4>
+                                <p>{(imageVal.length && imageVal.width) ? imageVal.length + "px * " + imageVal.width + "px" : "No Information Available"}</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                      </a>
-                    </div>
+                    );
+                    
+                    
+                   
+                   }
+                   else{
+                     return null;
+                   }
+                  
+
+                    //return (
+                     
+                    //   <div style={{ display: "flex", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px",flexDirection:"row !important" }}>
+                    //     <a href={item.url} style={{display: "flex", borderRadius: "8px",textDecoration: "none", color:"#424242"}}>
+                    //   <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
+                    //   <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
+                    //     <div style={{ display: "flex", alignItems: "center" }}>
+                    //       <h4 style={{ marginRight: "5px" }}>Web Site:</h4>
+                    //       <p>{item.baseurl}</p>
+                    //     </div>
+                    //     <div style={{ display: "flex", alignItems: "center" }}>
+                    //       <h4 style={{ marginRight: "5px" }}>Image Name:</h4>
+                    //       <p>{item.filename?item.filename:"No Information Available"}</p>
+                    //     </div>
+                    //     <div style={{ display: "flex", alignItems: "center" }}>
+                    //       <h4 style={{ marginRight: "5px" }}>Image Size:</h4>
+                    //       <p>{item.filesize?Math.round(item.filesize/1000) +"KB":"No Information Available"}</p>
+                    //     </div>
+                    //      <div style={{ display: "flex", alignItems: "center" }}>
+                    //       <h4 style={{ marginRight: "5px" }}>Image Dimensions:</h4>
+                    //       <p>{(item.length && item.width)?item.length+"px * "+item.width+"px":"No Information Available"}</p>
+                    //     </div>
+                    //   </div>
+                    //   </a>
+                    // </div>
                     
                           
-                    );
+                   // );
                   }
                 else{
                 return  (
