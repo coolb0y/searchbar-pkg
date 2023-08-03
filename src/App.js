@@ -22,11 +22,17 @@ function App() {
   const [phraseMatch, setPhraseMatch] = useState(false);
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
   const [viewCount, setViewCount] = useState(false);
+  const [splitDone,setSplitDone] = useState(false);
+  const [nextWord, setNextWord] = useState("");
   const [searchText,setSearchText]=useState("");
   useEffect(() => {
    
+
+
+
     if(searchText.trim() !== "" && searchText.length > 0) {
       setViewCount(true);
+
     }
     else{
       setViewCount(false);
@@ -76,7 +82,22 @@ function App() {
 
   const customQueryfn = (value, props) => {
     //console.log(value,'value');
-    const sortterm = value.substring(0,100);
+    let sortterm =value;
+    const words = value.trim().split(/\s+/);
+    const maxWords = 25;
+    
+    if(words.length > maxWords){
+      const truncatedValue = words.slice(0, maxWords).join(' ');
+      setSplitDone(true);
+      const thirtyThirdWord = words[maxWords];
+      console.log(thirtyThirdWord,'thirdy third word');
+      setNextWord(thirtyThirdWord);
+      setSearchText(truncatedValue);
+    }
+    else{
+      setSplitDone(false);
+    }
+   
     setSearchText(sortterm)
    console.log(searchText,'searchText')
    // console.log(phraseMatch,'phrase matchoutside')
@@ -280,7 +301,7 @@ function App() {
               
             }}
            showClear={true}
-           debounce={500}
+           debounce={0}
            showVoiceSearch={true}
            customQuery={customQueryfn}
             fuzziness={fuzzinessval}
@@ -332,13 +353,17 @@ function App() {
                 <a href="www.google.com" style={{ textDecoration: "none", color: "#3ea9e6", marginRight: "10px" }}><h5 style={{ display: "inline" }}>Search Help</h5></a>
                 <a href="www.google.com" style={{ textDecoration: "none", color: "#3ea9e6" }}><h5 style={{ display: "inline",marginRight:"15px" }}>Advanced Search</h5></a>
               </div>
+              
             </div>
+            {splitDone  && <p style={{ whiteSpace: "pre-line",marginRight:"10px" }}>
+            <span style={{ color: "rgb(152, 152, 152)", padding: "2px",fontWeight:"bold" }}>{nextWord}</span> and any subsequent words was ignored because we limit queries to 25 words
+             </p>}
 
             <SelectedFilters showClearAll={true} clearAllLabel="Clear filters" />
 
            <ReactiveList
           //  showResultStats={false}
-          
+          loader="Loading Results.."
           onQueryChange={
             function(prevQuery, nextQuery) {
               if ('match_all' in nextQuery['query']) {
