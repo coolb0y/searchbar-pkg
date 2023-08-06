@@ -14,7 +14,7 @@ import "./styles.css";
 import { useState } from "react";
 
 function App() {
-  const [numberOfResult,setNumberOfResult] = useState(6);
+  const [numberOfResult,setNumberOfResult] = useState(8);
   const indexname = process.env.REACT_APP_INDEX_NAME;
   const [fuzzinessval,setFuzzinessval]=useState(2);
   const [queryFormatval,setQueryFormatval]=useState("or");
@@ -413,7 +413,7 @@ function App() {
                   if (item.filetype === "image") {
                    // console.log(item)
                 
-                   const shouldAddItem = imageItems.length<3
+                   const shouldAddItem = imageItems.length<4
                   
 
                    if(shouldAddItem){
@@ -421,7 +421,7 @@ function App() {
                      imageItems.push(item)
                     }
 
-                   const shouldRenderImage = imageItems.length>=3 || index ===data.length-1
+                   const shouldRenderImage = imageItems.length>=4 || index ===data.length-1
                    let imageData = imageItems;
                   
                    if(shouldRenderImage) {
@@ -430,9 +430,9 @@ function App() {
                     return (
                       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
                         {imageData.map((imageVal) => (
-                          <div key={imageVal.url} style={{ display: "flex", flexDirection: "column", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "10px", width: "16.5rem" }}>
+                          <div key={imageVal.url} style={{ display: "flex", flexDirection: "column", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "5px", padding: "5px", width: "15rem" }}>
                             <a href={imageVal.url} style={{ display: "flex", borderRadius: "8px", textDecoration: "none", color: "#424242" }}>
-                              <img src={imageVal.url} style={{ width: "110%", height: "16.5rem", objectFit: "cover", borderRadius: "8px",marginRight:"15px" }} />
+                              <img src={imageVal.url} style={{ width: "100%", height: "15rem", objectFit: "cover", borderRadius: "8px",marginRight:"15px" }} />
                             </a>
                             <div style={{ margin:"0px" }}>
                               <div style={{ display: "flex", alignItems: "center" }}>
@@ -464,35 +464,6 @@ function App() {
                      return null;
                    }
                   
-
-                    //return (
-                     
-                    //   <div style={{ display: "flex", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px",flexDirection:"row !important" }}>
-                    //     <a href={item.url} style={{display: "flex", borderRadius: "8px",textDecoration: "none", color:"#424242"}}>
-                    //   <img src={item.url} style={{ width: "15rem", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
-                    //   <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
-                    //     <div style={{ display: "flex", alignItems: "center" }}>
-                    //       <h4 style={{ marginRight: "5px" }}>Web Site:</h4>
-                    //       <p>{item.baseurl}</p>
-                    //     </div>
-                    //     <div style={{ display: "flex", alignItems: "center" }}>
-                    //       <h4 style={{ marginRight: "5px" }}>Image Name:</h4>
-                    //       <p>{item.filename?item.filename:"No Information Available"}</p>
-                    //     </div>
-                    //     <div style={{ display: "flex", alignItems: "center" }}>
-                    //       <h4 style={{ marginRight: "5px" }}>Image Size:</h4>
-                    //       <p>{item.filesize?Math.round(item.filesize/1000) +"KB":"No Information Available"}</p>
-                    //     </div>
-                    //      <div style={{ display: "flex", alignItems: "center" }}>
-                    //       <h4 style={{ marginRight: "5px" }}>Image Dimensions:</h4>
-                    //       <p>{(item.length && item.width)?item.length+"px * "+item.width+"px":"No Information Available"}</p>
-                    //     </div>
-                    //   </div>
-                    //   </a>
-                    // </div>
-                    
-                          
-                   // );
                   }
                 else{
                 return  (
