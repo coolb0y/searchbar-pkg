@@ -430,26 +430,26 @@ function App() {
                     return (
                       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
                         {imageData.map((imageVal) => (
-                          <div key={imageVal.url} style={{ display: "flex", flexDirection: "column", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "5px", width: "15rem" }}>
+                          <div key={imageVal.url} style={{ display: "flex", flexDirection: "column", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "10px", padding: "10px", width: "16.5rem" }}>
                             <a href={imageVal.url} style={{ display: "flex", borderRadius: "8px", textDecoration: "none", color: "#424242" }}>
-                              <img src={imageVal.url} style={{ width: "100%", height: "15rem", objectFit: "cover", borderRadius: "8px" }} />
+                              <img src={imageVal.url} style={{ width: "110%", height: "16.5rem", objectFit: "cover", borderRadius: "8px",marginRight:"15px" }} />
                             </a>
-                            <div style={{ marginTop: "10px" }}>
+                            <div style={{ margin:"0px" }}>
                               <div style={{ display: "flex", alignItems: "center" }}>
-                                <h4 style={{ marginRight: "5px" }}>Web Site:</h4>
-                                <p>{imageVal.baseurl}</p>
+                                <h4 style={{ margin:"0" }}>Website:</h4>
+                                <p style={{ margin:"3px" }}>{imageVal.baseurl}</p>
                               </div>
                               <div style={{ display: "flex", alignItems: "center" }}>
-                                <h4 style={{ marginRight: "5px" }}>Image Name:</h4>
-                                <p>{imageVal.filename ? imageVal.filename : "No Information Available"}</p>
+                                <h4 style={{ margin:"0px" }}>Image Name:</h4>
+                                <p  style={{ margin:"3px" }}>{imageVal.filename ? imageVal.filename : "No Information Available"}</p>
                               </div>
                               <div style={{ display: "flex", alignItems: "center" }}>
-                                <h4 style={{ marginRight: "5px" }}>Image Size:</h4>
-                                <p>{imageVal.filesize ? Math.round(imageVal.filesize / 1000) + "KB" : "No Information Available"}</p>
+                                <h4 style={{ margin:"0px"}}>Image Size:</h4>
+                                <p  style={{ margin:"3px" }}>{imageVal.filesize ? Math.round(imageVal.filesize / 1000) + "KB" : "No Information Available"}</p>
                               </div>
                               <div style={{ display: "flex", alignItems: "center" }}>
-                                <h4 style={{ marginRight: "5px" }}>Image Dimensions:</h4>
-                                <p>{(imageVal.length && imageVal.width) ? imageVal.length + "px * " + imageVal.width + "px" : "No Information Available"}</p>
+                                <h4 style={{  margin:"0px"}}>Dimensions:</h4>
+                                <p  style={{ margin:"3px" }}>{(imageVal.length && imageVal.width) ? imageVal.length + "px * " + imageVal.width + "px" : "No Information Available"}</p>
                               </div>
                             </div>
                           </div>
