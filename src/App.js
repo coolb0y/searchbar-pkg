@@ -98,7 +98,7 @@ function App() {
     }
    
     setSearchText(sortterm)
-   console.log(searchText,'searchText')
+   //console.log(searchText,'searchText')
    // console.log(phraseMatch,'phrase matchoutside')
     
     if (value.trim() !== "") {
@@ -156,6 +156,7 @@ function App() {
                           "type": "best_fields",
                           "operator": queryFormatval,
                           "fuzziness": "AUTO",
+                          "minimum_should_match": 5
                         }
                       },
                       {
@@ -163,7 +164,8 @@ function App() {
                           "query": value,
                           "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "phrase",
-                          "operator": queryFormatval
+                          "operator": queryFormatval,
+                          "minimum_should_match": 5
                         }
                       },
                       {
@@ -171,11 +173,12 @@ function App() {
                           "query": value,
                           "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "phrase_prefix",
-                          "operator": queryFormatval
+                          "operator": queryFormatval,
+                          "minimum_should_match": 5
                         }
                       }
                     ],
-                    "minimum_should_match": 0
+                    // "minimum_should_match": 5
                   }
                 }
               ]
@@ -238,7 +241,7 @@ function App() {
           paddingBottom: "30px",
         }}
       />
-         <div>
+        <div>
 
        
           <MultiList
@@ -522,10 +525,14 @@ function App() {
                 }
                })}
               </ReactiveList.ResultListWrapper>
+              
             )}}
           />
+        
         </div>
+        
       </div>
+     
     </ReactiveBase>
     </div>
   );
