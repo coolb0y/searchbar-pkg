@@ -1,0 +1,45 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.css-1qtpd4b-InputGroup {
+  /* box-shadow: none !important; */
+  border-radius: 20px !important;
+}
+.css-1tj39sd-Input-Input{
+  border-radius: 20px !important;
+  
+}
+.css-18kg64w-Input-Input {
+  border-radius: 20px !important;
+}
+
+.css-1kfwsuu-resultStats{
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+
+.searchdiv{
+  padding-left:10px;
+  flex:1;
+  
+}
+
+.ReactGridGallery_tile-bottom-bar {
+  margin-bottom: 1.3rem;
+}
+
+
+.custom-overlay__caption {
+  background-color: rgba(0, 0, 0, 0.8);
+  max-height: 240px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  padding: 2px;
+  font-size: 90%;
+}
