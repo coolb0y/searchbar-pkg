@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Searchpage />} />
         <Route exact path="/image" element={<Imagepage />} />
+      
         </Routes>
         </BrowserRouter>
 

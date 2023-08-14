@@ -1,26 +1,32 @@
 import { Gallery } from "react-grid-gallery";
-import {useState } from "react";
+import React,{useRef } from "react";
 import "./styles.css";
 
 
 const images = [
+
     {
       src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
+      link:"https://google.com",
       width: 4,
       height: 3,
       tags:[
         {value:"http://algebraresource"},
+        { value:"335px * 300px"},
        { value:"25KB"},
-       { value:"335px * 300px"},
+       {value:"Helloword.jpg"}
       
       ],
-      caption: "After Rain (Jeshu John - designerspics.com)",
-      thumbnailCaption: "Raindrops on Leaves",
-      customOverlay: (
-        <div className="custom-overlay__caption">
-          <div>Boats (Jeshu John - designerspics.com)</div>
-        </div>
+      caption: (
+        <a
+          href="https://en.wikipedia.org/wiki/Apple"
+         
+        >
+          Apple
+        </a>
       ),
+      thumbnailCaption: "Raindrops on Leaves",
+     
     },
     {
         src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
@@ -31,6 +37,13 @@ const images = [
           { value: "Flora", title: "Flora" },
         ],
         caption: "After Rain (Jeshu John - designerspics.com)",
+        customOverlay: (
+            <a src="https://google.com">
+            <div className="custom-overlay__caption">
+              <div>Boats (Jeshu John - designerspics.com)</div>
+            </div>
+            </a>
+          ),
       },
       {
         src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
@@ -196,20 +209,35 @@ const images = [
 
 
 function Imagepage(props){
+
+  
+   
+    // function ImageComponent(props) {
+    //     return (
+    //       <a href={props.item.link} target="_blank">
+    //         <img {...props.imageProps} />
+    //       </a>
+    //     );
+    //   }
+
     const customTagStyle = (item) => {
         // You can modify this function to return the desired style based on the image item
         return {
           backgroundColor: "rgb(129, 133, 137,0.3)", // Replace with your desired styles
           color: "white",
-          fontSize: "12px",
-          padding: "3px 6px",
+         fontSize:"12px",
           marginBottom:"1.5rem"
         };
       };
     
 return (
-    <Gallery images={images} enableImageSelection={false} margin={5} tagStyle={customTagStyle} />
-)
+    <Gallery images={images}  enableImageSelection={false} margin={5} 
+   // thumbnailImageComponent={ImageComponent}
+     tagStyle={customTagStyle} 
+      enableLightbox={true}
+     />
+    )
+
 }
 
 export default Imagepage;
