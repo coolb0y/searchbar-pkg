@@ -400,18 +400,24 @@ function Searchpage() {
             }}
             style={{ textAlign: "left" }}
             render={({ data }) =>
-            { //console.log(data)
+            { console.log(data)
+              const numImages = data.filter(item => item.filetype === 'image').length;
+              let currImage=0;
            return (
               
               <ReactiveList.ResultListWrapper>
-                {data.map((item,index) => {
+                {
+                
+                
+                data.map((item,index) => {
 
                   let urlnew=generateLinkString(item.url)
                   //console.log(urlnew,'urlnew');
                  
                   //console.log(item)
                   if (item.filetype === "image") {
-                   // console.log(item)
+                  // console.log(item)
+                  currImage =currImage+1;
                 
                    const shouldAddItem = imageItems.length<4
                   
@@ -419,9 +425,11 @@ function Searchpage() {
                    if(shouldAddItem){
                   
                      imageItems.push(item)
+                     console.log('item added')
+                     console.log(imageItems,'image items');
                     }
 
-                   const shouldRenderImage = imageItems.length>=4 || index ===data.length-1
+                   const shouldRenderImage = imageItems.length>=4 || index ===data.length-1 || currImage === numImages
                    let imageData = imageItems;
                   
                    if(shouldRenderImage) {
@@ -466,6 +474,7 @@ function Searchpage() {
                   
                   }
                 else{
+                  //console.log(item)
                 return  (
                   
                     <ResultList key={item._id}>
