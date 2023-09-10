@@ -18,7 +18,7 @@ function ImageTabsComponent(props) {
             // Create the tags array
             const tags = [
               { value: cleanUrl },
-              { value: `${length}px * ${width}px` },
+              { value: `${length<width*1.5?length:width*1.5}px * ${width}px` },
               { value: `${Math.round(filesize / 1000)}KB` },
               { value: filename },
               // {value:<a href="http://google.com">Google</a>,title:"google"}
