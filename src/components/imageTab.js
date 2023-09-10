@@ -28,7 +28,7 @@ function ImageTabsComponent(props) {
             return {
               src: url,
               link: "https://google.com", // You can set the link as needed
-              width: width,
+              width: width<length*2?width:length*2,
               height: length,
               tags: tags,
             //   customOverlay: (
