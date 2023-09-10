@@ -44,10 +44,11 @@
   font-size: 90%;
 }
 
-.tab {
+.tabs {
   
   flex:1;
   flex-direction:column;
+  margin-bottom: 1rem !important;
 }
 
 .tabcomponent {
