@@ -381,7 +381,7 @@ function Searchpage() {
             if (isSearchEmpty) {
               return (
                 <div style={{ paddingLeft: "10px" }}>
-                  <h3>Please type in the search bar to search</h3>
+                  <p style={{color:"#424242", fontSize:"large"}}>Please type in the search bar to search</p>
                 </div>
               );
             } else {

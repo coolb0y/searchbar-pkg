@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@appbaseio/reactivesearch": "^3.29.2-preview.4",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "path": "^0.12.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

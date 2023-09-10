@@ -43,3 +43,17 @@
   padding: 2px;
   font-size: 90%;
 }
+
+.tab {
+  
+  flex:1;
+  flex-direction:column;
+}
+
+.tabcomponent {
+  margin:5px;
+  padding:5px;
+  text-decoration: none;
+  font-size: larger;
+  color:#424242;
+}

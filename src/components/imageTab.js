@@ -14,13 +14,14 @@ function ImageTabsComponent(props) {
         const transformedData = imageData.map(item => {
             // Extract the properties from the original item
             const { url, width, length, baseurl, filesize, filename } = item;
-          
+            let cleanUrl = baseurl.replace(/^https?:\/\//, '');
             // Create the tags array
             const tags = [
-              { value: baseurl },
+              { value: cleanUrl },
               { value: `${length}px * ${width}px` },
               { value: `${Math.round(filesize / 1000)}KB` },
               { value: filename },
+              // {value:<a href="http://google.com">Google</a>,title:"google"}
             ];
           
             // Create the object in the desired format
@@ -65,6 +66,7 @@ function ImageTabsComponent(props) {
     };
 
     return (
+
         <Gallery images={images} enableImageSelection={false} margin={5}
             // thumbnailImageComponent={ImageComponent}
             tagStyle={customTagStyle}
