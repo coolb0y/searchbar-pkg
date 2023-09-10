@@ -53,8 +53,13 @@
 
 .tabcomponent {
   margin:5px;
-  padding:5px;
+  padding-right: 10px;
   text-decoration: none;
   font-size: larger;
   color:#424242;
+}
+
+.active-tab {
+  color:rgb(62, 169, 230) !important;
+  
 }
