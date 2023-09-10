@@ -6,13 +6,14 @@ import Imagepage from "./components/imagepage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Searchpage />} />
-        <Route exact path="/image" element={<Imagepage />} />
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route exact path="/" element={<Searchpage />} />
+    //     <Route exact path="/image1234" element={<Imagepage />} />
       
-        </Routes>
-        </BrowserRouter>
+    //     </Routes>
+    //     </BrowserRouter>
+    <Searchpage />
 
   )
 }
