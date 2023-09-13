@@ -59,7 +59,7 @@ function ImageTabsComponent(props) {
     const customTagStyle = (item) => {
         // You can modify this function to return the desired style based on the image item
         return {
-            backgroundColor: "rgb(129, 133, 137,0.3)", // Replace with your desired styles
+            backgroundColor: "rgb(129, 133, 137,0.6)", // Replace with your desired styles
             color: "white",
             fontSize: "12px",
             marginBottom: "1.5rem"

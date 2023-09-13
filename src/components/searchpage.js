@@ -41,7 +41,7 @@ function Searchpage() {
   }, [searchText]);
 
   const handleFilterChange = (filter)=>{
-    console.log(filter.filetypefilter?filter.filetypefilter.value:null,'change filter');
+   // console.log(filter.filetypefilter?filter.filetypefilter.value:null,'change filter');
     if(filter && filter.filetypefilter){
       if(filter.filetypefilter.value.includes("image")){
         setImageFilterUsed(true);
@@ -65,7 +65,7 @@ function Searchpage() {
     const newValue = parseInt(event.target.value);
     setNumberOfResult(newValue);
     // Perform actions with the new value
-    console.log("Current value: " + newValue);
+    //console.log("Current value: " + newValue);
   };
 
 
@@ -110,7 +110,7 @@ function Searchpage() {
       const truncatedValue = words.slice(0, maxWords).join(' ');
       setSplitDone(true);
       const thirtyThirdWord = words[maxWords];
-      console.log(thirtyThirdWord,'thirdy third word');
+      //console.log(thirtyThirdWord,'thirdy third word');
       setNextWord(thirtyThirdWord);
       setSearchText(truncatedValue);
     }
