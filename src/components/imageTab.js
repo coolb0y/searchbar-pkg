@@ -17,10 +17,11 @@ function ImageTabsComponent(props) {
             let cleanUrl = baseurl.replace(/^https?:\/\//, '');
             // Create the tags array
             const tags = [
+              { value: filename },
               { value: cleanUrl },
               { value: `${length}px * ${width}px` },
               { value: `${Math.round(filesize / 1000)}KB` },
-              { value: filename },
+             
               // {value:<a href="http://google.com">Google</a>,title:"google"}
             ];
           
