@@ -28,7 +28,8 @@
 }
 
 .ReactGridGallery_tile-bottom-bar {
-  margin-bottom: 2px;
+  margin-bottom: 0px;
+  
   padding-bottom: 0px;
 }
 
@@ -38,10 +39,10 @@
   max-height: 240px;
   overflow: hidden;
   position: absolute;
-  bottom: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
   width: 100%;
   color: white;
-  /* padding: 2px; */
   font-size: 90%;
 }
 
