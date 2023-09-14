@@ -61,7 +61,7 @@ function ImageTabsComponent(props) {
         return {
             backgroundColor: "rgb(129, 133, 137,0.7)", // Replace with your desired styles
             color: "white",
-            fontSize: "14px",
+            fontSize: "12px",
             marginBottom: "1.5rem"
         };
     };
