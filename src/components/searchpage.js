@@ -48,10 +48,12 @@ function Searchpage() {
       }
       else{
         setImageFilterUsed(false);
+        updatenumberOfResult(6);
       }
     }
     else{
       setImageFilterUsed(false);
+      updatenumberOfResult(6);
     }
   }
 
