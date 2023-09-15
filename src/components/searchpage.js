@@ -42,7 +42,7 @@ function Searchpage() {
 
   const handleFilterChange = (filter)=>{
    // console.log(filter.filetypefilter?filter.filetypefilter.value:null,'change filter');
-    if(filter && filter.filetypefilter){
+    if(filter && filter.filetypefilter && filter.filetypefilter.value){
       if(filter.filetypefilter.value.includes("image")){
         setImageFilterUsed(true);
       }
