@@ -10,7 +10,7 @@ import {
 
 } from "@appbaseio/reactivesearch";
 import "./styles.css";
-// import Tab from "./Tab";
+
 import ImageTab from "./imageTab";
 
 

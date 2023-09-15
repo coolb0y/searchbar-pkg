@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Searchpage from "./components/searchpage";
-import Imagepage from "./components/imagepage";
+
 
 function App() {
   return (
