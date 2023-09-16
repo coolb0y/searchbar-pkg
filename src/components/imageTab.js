@@ -21,14 +21,12 @@ function ImageTab(props) {
               { value: cleanUrl },
               { value: `${length}px * ${width}px` },
               { value: `${Math.round(filesize / 1000)}KB` },
-             
-              // {value:<a href="http://google.com">Google</a>,title:"google"}
             ];
           
             // Create the object in the desired format
             return {
               src: url,
-              link: "https://google.com", // You can set the link as needed
+              // link: "https://google.com", 
               width: width,
               height: length,
               tags: tags,
