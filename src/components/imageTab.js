@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Gallery } from "react-grid-gallery";
 import "./styles.css";
 
-function ImageTabsComponent(props) {
+function ImageTab(props) {
    const {data,updateResult} = props;
 
     updateResult(52);
@@ -72,9 +72,9 @@ function ImageTabsComponent(props) {
         <Gallery images={images} enableImageSelection={false} margin={5}
             // thumbnailImageComponent={ImageComponent}
             tagStyle={customTagStyle}
-            enableLightbox={true}
+           // enableLightbox={true}
         />
     );
 }
 
-export default ImageTabsComponent;
+export default ImageTab;
