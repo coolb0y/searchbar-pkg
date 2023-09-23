@@ -419,7 +419,7 @@ function Searchpage() {
           }}
             componentId="results"
             dataField="title"
-            // size={numberOfResult}
+             size={numberOfResult}
             // pagination={true}
             infiniteScroll={true}
             react={{
