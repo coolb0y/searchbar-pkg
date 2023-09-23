@@ -51,6 +51,12 @@ function ImageTab(props) {
           setImages(transformedData)
     }, [props.data]);
 
+
+    const handleClick = (index,image)=>{
+     
+      window.open(image.src, "_blank")
+    }
+
    // console.log(props.data,'props data');
    // console.log(images,'images')
 
@@ -70,6 +76,7 @@ function ImageTab(props) {
         <Gallery images={images} enableImageSelection={false} margin={5}
             // thumbnailImageComponent={ImageComponent}
             tagStyle={customTagStyle}
+            onClick={handleClick}
            // enableLightbox={true}
         />
     );

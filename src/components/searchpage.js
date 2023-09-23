@@ -419,8 +419,9 @@ function Searchpage() {
           }}
             componentId="results"
             dataField="title"
-            size={numberOfResult}
-            pagination={true}
+            // size={numberOfResult}
+            // pagination={true}
+            infiniteScroll={true}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
             }}
