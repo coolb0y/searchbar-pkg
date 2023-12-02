@@ -12,39 +12,32 @@ function ImageTab(props) {
      useEffect(() => {
         // Filter images and set them when the component mounts or when props.data changes
         const transformedData = imageData.map(item => {
-            // Extract the properties from the original item
-            const { url, width, length, baseurl, filesize, filename } = item;
-            let cleanUrl = baseurl.replace(/^https?:\/\//, '');
-            // Create the tags array
-            const tags = [
-              { value: filename },
-              { value: cleanUrl },
-              { value: `${length}px * ${width}px` },
-              { value: `${Math.round(filesize / 1000)}KB` },
-            ];
-          
-            // Create the object in the desired format
-            return {
-              src: url,
-              // link: "https://google.com", 
-              width: width,
-              height: length,
-              tags: tags,
-            //   customOverlay: (
-            //     <a src="https://google.com">
-            //     <div className="custom-overlay__caption">
-            //       <div>Boats (Jeshu John - designerspics.com)</div>
-            //     </div>
-            //     </a>
-            //   ),
-            //   caption: (
-            //     <a href="https://en.wikipedia.org/wiki/Apple">
-            //       {filename}
-            //     </a>
-            //   ),
-              //thumbnailCaption: "Raindrops on Leaves",
-            };
-          });
+          // Extract the properties from the original item
+          const { url, width, length, baseurl, filesize, filename } = item;
+          let cleanUrl = baseurl.replace(/^https?:\/\//, '');
+        
+          // Add a condition to filter out images with width or height less than 100 and filesize less than 5KB
+          if ((width < 100 || length < 100) && filesize < 5000) {
+            return null; // Skip this item
+          }
+        
+          // Create the tags array
+          const tags = [
+            { value: filename },
+            { value: cleanUrl },
+            { value: `${length}px * ${width}px` },
+            { value: `${Math.round(filesize / 1000)}KB` },
+          ];
+        
+          // Create the object in the desired format
+          return {
+            src: url,
+            width: width,
+            height: length,
+            tags: tags,
+          };
+        }).filter(item => item !== null); // Remove null entries from the array
+        
           
           // transformedData now contains the data in the desired format
           //console.log(transformedData,'transformedData');

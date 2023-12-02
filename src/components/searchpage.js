@@ -40,6 +40,10 @@ function Searchpage() {
     }
   }, [searchText]);
 
+  // useEffect(() => {
+  //   console.log(numberOfResult,'numberOfResult');
+  // },[numberOfResult])
+
   const handleFilterChange = (filter)=>{
    // console.log(filter.filetypefilter?filter.filetypefilter.value:null,'change filter');
     if(filter && filter.filetypefilter && filter.filetypefilter.value){
@@ -48,12 +52,12 @@ function Searchpage() {
       }
       else{
         setImageFilterUsed(false);
-        updatenumberOfResult(6);
+        updatenumberOfResult(8);
       }
     }
     else{
       setImageFilterUsed(false);
-      updatenumberOfResult(6);
+      updatenumberOfResult(8);
     }
   }
 
@@ -63,12 +67,12 @@ function Searchpage() {
 
 
 
-  const handleRangeChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    setNumberOfResult(newValue);
-    // Perform actions with the new value
-    //console.log("Current value: " + newValue);
-  };
+  // const handleRangeChange = (event) => {
+  //   const newValue = parseInt(event.target.value);
+  //   updatenumberOfResult(newValue);
+  //   // Perform actions with the new value
+  //   console.log("Current value: " + newValue);
+  // };
 
 
   function generateLinkString(url) {
@@ -297,9 +301,9 @@ function Searchpage() {
           />
        
 
-          <label for="points" style={{fontWeight: "bold"}}>Result Number on Page</label>
+          {/* <label for="points" style={{fontWeight: "bold"}}>Result Number on Page</label>
           <input type="range" id="points" name="points" min="2" max="20" value={numberOfResult} onChange={handleRangeChange} style={{display:"inline"}}/>
-          {viewCount?<p style={{display:"inline",marginLeft:"8.6rem",color:"#9b9b9b",marginTop:"0px"}}>{numberOfResult}</p>:<p></p>}
+          {viewCount?<p style={{display:"inline",marginLeft:"8.6rem",color:"#9b9b9b",marginTop:"0px"}}>{numberOfResult}</p>:<p></p>} */}
           <SingleRange
             componentId="sizefilter"
             dataField="filesize"
@@ -419,8 +423,8 @@ function Searchpage() {
           }}
             componentId="results"
             dataField="title"
-             size={numberOfResult}
-            // pagination={true}
+            size={numberOfResult}
+            pagination={false}
             infiniteScroll={true}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
@@ -432,7 +436,7 @@ function Searchpage() {
             // console.log(data)
             if(!imageFilterUsed){
               return (
-                // <Tab data={data} updatenumberOfResult={updatenumberOfResult}/>
+                
                 <ReactiveList.ResultListWrapper>
                   {
                   
@@ -524,7 +528,7 @@ function Searchpage() {
                         <p style={{textDecoration:"none", color:"#989898",fontWeight: "bold"}}>{urlnew}</p>
                         </a>
                         <ResultList.Description>
-                          {item.filedetails.substring(0, 250)}
+                          {item.filedetails?item.filedetails.substring(0, 250):""}
                         </ResultList.Description>
                         </ResultList.Content>
                       </ResultList>
