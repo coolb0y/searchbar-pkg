@@ -378,7 +378,7 @@ function Searchpage() {
                   onChange={handlePhraseMatchChange}
                 />
 
-                <label htmlFor="phraseMatch" style={{ marginBottom: "2px" }}>Match Full Phrase</label>
+                <label htmlFor="phraseMatch" style={{ marginBottom: "2px" }}>Match Exact Phrase</label>
               </div>
 
               <div>
