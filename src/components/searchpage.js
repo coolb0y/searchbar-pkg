@@ -10,9 +10,8 @@ import {
 
 } from "@appbaseio/reactivesearch";
 import "./styles.css";
-
 import ImageTab from "./imageTab";
-
+import Switch from "react-switch";
 
 function Searchpage() {
   const [numberOfResult,setNumberOfResult] = useState(8);
@@ -27,6 +26,7 @@ function Searchpage() {
   const [nextWord, setNextWord] = useState("");
   const [searchText,setSearchText]=useState("");
   const [imageFilterUsed,setImageFilterUsed] = useState(false);
+  const [toggleActive,setToggleActive] = useState(true);
   
 
   useEffect(() => {
@@ -40,9 +40,7 @@ function Searchpage() {
     }
   }, [searchText]);
 
-  // useEffect(() => {
-  //   console.log(numberOfResult,'numberOfResult');
-  // },[numberOfResult])
+
 
   const handleFilterChange = (filter)=>{
    // console.log(filter.filetypefilter?filter.filetypefilter.value:null,'change filter');
@@ -65,14 +63,6 @@ function Searchpage() {
     setNumberOfResult(newResults);
   };
 
-
-
-  // const handleRangeChange = (event) => {
-  //   const newValue = parseInt(event.target.value);
-  //   updatenumberOfResult(newValue);
-  //   // Perform actions with the new value
-  //   console.log("Current value: " + newValue);
-  // };
 
 
   function generateLinkString(url) {
@@ -105,7 +95,16 @@ function Searchpage() {
   
   };
 
+  const handleImageToggleChange = (nextChecked)=>{
+      setToggleActive(nextChecked);
+      
+  }
 
+  const handleImageToggleDiv = ()=>{
+      setToggleActive(!toggleActive);
+  }
+
+ 
   const customQueryfn = (value, props) => {
     //console.log(value,'value');
     let sortterm =value;
@@ -282,9 +281,30 @@ function Searchpage() {
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
             }}
+
+            innerClass={{
+            
+              input: 'filetypefilter-input'
+          }}
+          className="filtetypefilterfield"
            
           />
-          
+
+         {imageFilterUsed? <div style={{ display: "flex", alignItems: "center" }} onClick={handleImageToggleDiv}>
+  <Switch
+    onChange={handleImageToggleChange}
+    checked={toggleActive}
+    className="react-switch"
+    height={18}
+    width={36}
+    onColor="#0B6AFF"
+  />
+  <label id="imageToggleLabel" style={{  marginLeft: "5px", textAlign: "center",  userSelect: "none" }}>
+    {toggleActive ? "Unhide Small Images" : "Hide Small Images"}
+  </label>
+    </div>
+    :null
+         } 
 
           <MultiList
             showSearch={true}
@@ -363,6 +383,7 @@ function Searchpage() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
            
               <div style={{ display: "flex", alignItems: "center" }}>
+
                 <input
                   type="checkbox"
                   checked={allMatch}
@@ -544,7 +565,7 @@ function Searchpage() {
             else if(imageFilterUsed){
               
               return (
-                <ImageTab data={data} updateResult={updatenumberOfResult} />
+                <ImageTab data={data} toggleActive={toggleActive} updateResult={updatenumberOfResult} />
               )
             }
              
