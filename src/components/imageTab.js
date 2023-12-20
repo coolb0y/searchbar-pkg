@@ -15,7 +15,7 @@ useEffect(() => {
 
   for (const item of data) {
     const { url, width, length, baseurl, filesize, filename } = item;
-    if (item.filetype !== "image" || (toggleActive && (width < 100 || length < 100 || filesize < 5000))) {
+    if (item.filetype !== "image" || (toggleActive &&  (width < 100 || length < 100) && filesize < 5000)) {
       continue; // Skip non-image items or images based on toggleActive conditions
     }
 

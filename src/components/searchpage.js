@@ -290,17 +290,26 @@ function Searchpage() {
            
           />
 
-         {imageFilterUsed? <div style={{ display: "flex", alignItems: "center" }} onClick={handleImageToggleDiv}>
-  <Switch
+         {imageFilterUsed? <div style={{ display: "flex", alignItems: "center",marginLeft:"-3px",marginTop:"-0.7rem",marginBottom:"1.1rem" }} onClick={handleImageToggleDiv}>
+  {/* <Switch
     onChange={handleImageToggleChange}
     checked={toggleActive}
     className="react-switch"
     height={18}
     width={36}
     onColor="#0B6AFF"
-  />
+  /> */}
+  
+  <input
+          type="checkbox"
+          checked={toggleActive}
+          onChange={handleImageToggleChange}
+          className="css-1bd5zqh-Checkbox-vh eekr4lp1"
+          style={{ maxWidth: "15px !important", height: "18px !important",border:"0px"}}
+        />
+      
   <label id="imageToggleLabel" style={{  marginLeft: "5px", textAlign: "center",  userSelect: "none" }}>
-    {toggleActive ? "Unhide Small Images" : "Hide Small Images"}
+    hide tiny images
   </label>
     </div>
     :null
@@ -404,7 +413,7 @@ function Searchpage() {
 
               <div>
                 <a href="http://chipstersearch/searchhelp" style={{ textDecoration: "none", color: "#3ea9e6", marginRight: "10px" }}><h5 style={{ display: "inline" }}>Search Help</h5></a>
-                <a href="http://chipstersearch/advanced" style={{ textDecoration: "none", color: "#3ea9e6" }}><h5 style={{ display: "inline",marginRight:"15px" }}>Advanced Search</h5></a>
+                {/* <a href="http://chipstersearch/advanced" style={{ textDecoration: "none", color: "#3ea9e6" }}><h5 style={{ display: "inline",marginRight:"15px" }}>Advanced Search</h5></a> */}
               </div>
               
             </div>
