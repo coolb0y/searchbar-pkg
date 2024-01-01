@@ -11,7 +11,7 @@ import {
 } from "@appbaseio/reactivesearch";
 import "./styles.css";
 import ImageTab from "./imageTab";
-import Switch from "react-switch";
+
 
 function Searchpage() {
   const [numberOfResult,setNumberOfResult] = useState(8);
@@ -33,6 +33,7 @@ function Searchpage() {
    
     if(searchText.trim() !== "" && searchText.length > 0) {
       setViewCount(true);
+      
 
     }
     else{
@@ -73,15 +74,15 @@ function Searchpage() {
     return formattedURL;
   }
 
-  const handleAllMatchChange = (event) => {
-    setAllMatch(event.target.checked);
-   // console.log(allMatch)
+  const handleAllMatchChange = () => {
+    setAllMatch(!allMatch);
+    console.log(allMatch)
     if(allMatch){
-     // console.log(allMatch,'All Match fn')
-      setFuzzinessval(2);
+     
+      setFuzzinessval(3);
       setQueryFormatval("or");
     }
-    else{
+    else if(!allMatch){
       //console.log(allMatch,'All Match fn1')
         setFuzzinessval(0);
         setQueryFormatval("and");
@@ -95,14 +96,17 @@ function Searchpage() {
   
   };
 
-  const handleImageToggleChange = (nextChecked)=>{
-      setToggleActive(nextChecked);
+  const handleImageToggleChange = ()=>{
+    
+      setToggleActive(!toggleActive);
+      
       
   }
 
   const handleImageToggleDiv = ()=>{
       setToggleActive(!toggleActive);
-  }
+      
+    }
 
  
   const customQueryfn = (value, props) => {
@@ -290,7 +294,7 @@ function Searchpage() {
            
           />
 
-         {imageFilterUsed? <div style={{ display: "flex", alignItems: "center",marginLeft:"-3px",marginTop:"-0.7rem",marginBottom:"1.1rem" }} onClick={handleImageToggleDiv}>
+         {imageFilterUsed? <div style={{ display: "flex", alignItems: "center",marginLeft:"-2px",marginTop:"-0.7rem",marginBottom:"1.1rem",cursor: "pointer" }} onClick={handleImageToggleDiv}>
   {/* <Switch
     onChange={handleImageToggleChange}
     checked={toggleActive}
@@ -299,14 +303,22 @@ function Searchpage() {
     width={36}
     onColor="#0B6AFF"
   /> */}
-  
-  <input
-          type="checkbox"
-          checked={toggleActive}
-          onChange={handleImageToggleChange}
-          className="css-1bd5zqh-Checkbox-vh eekr4lp1"
-          style={{ maxWidth: "15px !important", height: "18px !important",border:"0px"}}
-        />
+
+<input
+  type="checkbox"
+  checked={toggleActive}
+  onChange={handleImageToggleChange}
+  style={{
+    color:"#0B6AFF",
+    width: "1.12rem",
+    height: "1.12rem",
+    borderRadius: "0.05rem",
+    position: "relative",
+    cursor: "pointer"
+    
+  }}
+/>
+
       
   <label id="imageToggleLabel" style={{  marginLeft: "5px", textAlign: "center",  userSelect: "none" }}>
     hide tiny images
@@ -330,9 +342,7 @@ function Searchpage() {
           />
        
 
-          {/* <label for="points" style={{fontWeight: "bold"}}>Result Number on Page</label>
-          <input type="range" id="points" name="points" min="2" max="20" value={numberOfResult} onChange={handleRangeChange} style={{display:"inline"}}/>
-          {viewCount?<p style={{display:"inline",marginLeft:"8.6rem",color:"#9b9b9b",marginTop:"0px"}}>{numberOfResult}</p>:<p></p>} */}
+         
           <SingleRange
             componentId="sizefilter"
             dataField="filesize"
@@ -391,29 +401,29 @@ function Searchpage() {
             
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
            
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center" }} >
 
                 <input
                   type="checkbox"
                   checked={allMatch}
-                  style={{ width: "19px", height: "19px", marginLeft: "10px", marginRight: "5px" }}
+                  style={{ width: "19px", height: "19px", marginLeft: "10px", marginRight: "5px",cursor: "pointer" }}
                   onChange={handleAllMatchChange}
                 />
-                <label htmlFor="allMatch" style={{ marginBottom: "2px", marginRight: "10px" }}>Match All Terms</label>
+                <label htmlFor="allMatch" style={{ marginBottom: "2px", marginRight: "10px",cursor: "pointer" }}>Match All Terms</label>
 
                 <input
                   type="checkbox"
                   checked={phraseMatch}
-                  style={{ width: "19px", height: "19px", marginLeft: "1px", marginRight: "5px" }}
+                  style={{ width: "19px", height: "19px", marginLeft: "1px", marginRight: "5px",cursor: "pointer" }}
                   onChange={handlePhraseMatchChange}
                 />
 
-                <label htmlFor="phraseMatch" style={{ marginBottom: "2px" }}>Match Exact Phrase</label>
+                <label htmlFor="phraseMatch" style={{ marginBottom: "2px",cursor: "pointer" }}>Match Exact Phrase</label>
               </div>
 
               <div>
                 <a href="http://chipstersearch/searchhelp" style={{ textDecoration: "none", color: "#3ea9e6", marginRight: "10px" }}><h5 style={{ display: "inline" }}>Search Help</h5></a>
-                {/* <a href="http://chipstersearch/advanced" style={{ textDecoration: "none", color: "#3ea9e6" }}><h5 style={{ display: "inline",marginRight:"15px" }}>Advanced Search</h5></a> */}
+               
               </div>
               
             </div>
@@ -474,78 +484,12 @@ function Searchpage() {
                   data.map((item,index) => {
   
                     let urlnew=generateLinkString(item.url)
-                    //console.log(urlnew,'urlnew');
                    
-                    //console.log(item)
-                    // if (item.filetype === "image") {
-                    // // console.log(item)
-                    // currImage =currImage+1;
-                  
-                    //  const shouldAddItem = imageItems.length<4
-                    
-  
-                    //  if(shouldAddItem){
-                    
-                    //    imageItems.push(item)
-                      
-                    //   }
-  
-                    //  const shouldRenderImage = imageItems.length>=4 || index ===data.length-1 || currImage === numImages
-                    //  let imageData = imageItems;
-                    
-                    //  if(shouldRenderImage) {
-                     
-                    //   imageItems = [];
-                    //   return (
-                    //     <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-                    //       {imageData.map((imageVal) => (
-                    //         <div key={imageVal.url} style={{ display: "flex", flexDirection: "column", borderRadius: "8px", borderBottom: "1px solid #efefef", marginLeft: "5px", padding: "5px", width: "15rem" }}>
-                    //           <a href={imageVal.url} style={{ display: "flex", borderRadius: "8px", textDecoration: "none", color: "#424242" }}>
-                    //             <img src={imageVal.url} style={{ width: "100%", height: "15rem", objectFit: "cover", borderRadius: "8px",marginRight:"15px" }} />
-                    //           </a>
-                    //           <div style={{ margin:"0px" }}>
-                    //             <div style={{ display: "flex", alignItems: "center" }}>
-                    //               <h4 style={{ margin:"0" }}>Website:</h4>
-                    //               <p style={{ margin:"3px" }}>{imageVal.baseurl}</p>
-                    //             </div>
-                    //             <div style={{ display: "flex", alignItems: "center" }}>
-                    //               <h4 style={{ margin:"0px" }}>Image Name:</h4>
-                    //               <p  style={{ margin:"3px" }}>{imageVal.filename ? imageVal.filename : "No Information Available"}</p>
-                    //             </div>
-                    //             <div style={{ display: "flex", alignItems: "center" }}>
-                    //               <h4 style={{ margin:"0px"}}>Image Size:</h4>
-                    //               <p  style={{ margin:"3px" }}>{imageVal.filesize ? Math.round(imageVal.filesize / 1000) + "KB" : "No Information Available"}</p>
-                    //             </div>
-                    //             <div style={{ display: "flex", alignItems: "center" }}>
-                    //               <h4 style={{  margin:"0px"}}>Dimensions:</h4>
-                    //               <p  style={{ margin:"3px" }}>{(imageVal.length && imageVal.width) ? imageVal.length + "px * " + imageVal.width + "px" : "No Information Available"}</p>
-                    //             </div>
-                    //           </div>
-                    //         </div>
-                    //       ))}
-                    //     </div>
-                    //   );
-                      
-                      
-                     
-                    //  }
-                    //  else{
-                    //    return null;
-                    //  }
-                    
-                    // }
-                   // else{
-                    //console.log(item)
                    return  (
                     
                       <ResultList key={item._id}>
                         
-                        {/* <ResultList.Image
-                          style={{
-                            backgroundSize: "cover",
-                            backgroundImage: `url(${item.image})`
-                          }}
-                        /> */}
+                      
                          <ResultList.Content>
                           <a href={item.url} style={{ textDecoration: "none", color: "#3ea9e6" }}>
                         

@@ -63,13 +63,16 @@
   color:rgb(62, 169, 230) !important;
 }
 
-#imageToggleLabel:hover {
-  color:rgb(62, 169, 230) !important;
-}
-
 .filetypefilterfield::after {
   color:red;
 } */
+
+ #imageToggleLabel:hover {
+  color:rgb(62, 169, 230) !important;
+  cursor: pointer;
+} 
+
+
 
 /* search icon color */
 .css-s7e34l-IconWrapper svg, .css-s7e34l-IconWrapper svg g#el_D93PK3GbmJ {
