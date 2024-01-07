@@ -128,17 +128,12 @@ function Searchpage() {
     }
    
     setSearchText(sortterm)
-   //console.log(searchText,'searchText')
-   // console.log(phraseMatch,'phrase matchoutside')
+   
     
     if (value.trim() !== "") {
       setIsSearchEmpty(false);
       if (phraseMatch) {
-       // console.log(phraseMatch,'phrase matchoutside inside')
-        // Use the phrase match
-        //setFuzzinessval(0);
-        //setQueryFormatval("and");
-       // console.log("phrase match",phraseMatch)
+      
         return {
           "query": {
             "bool": {
@@ -186,7 +181,7 @@ function Searchpage() {
                           "type": "best_fields",
                           "operator": queryFormatval,
                           "fuzziness": "AUTO",
-                          "minimum_should_match": 5
+                       
                         }
                       },
                       {
@@ -195,7 +190,7 @@ function Searchpage() {
                           "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "phrase",
                           "operator": queryFormatval,
-                          "minimum_should_match": 5
+                       
                         }
                       },
                       {
@@ -204,11 +199,11 @@ function Searchpage() {
                           "fields": ["title^7", "filedetails^4", "artists^3", "album^2", "imgtags^1","filename^1"],
                           "type": "phrase_prefix",
                           "operator": queryFormatval,
-                          "minimum_should_match": 5
+                        
                         }
                       }
                     ],
-                    // "minimum_should_match": 5
+                  // "minimum_should_match": 1
                   }
                 }
               ]
@@ -244,7 +239,7 @@ function Searchpage() {
 			// 	Authorization:  btoa('readall:Total123@') // Replace with your username and password
 			// }}
     >
-      {/* other components will go here. */}
+     
      
       <div style={{ display: "flex", flexDirection: "row" }}>
      
@@ -295,14 +290,7 @@ function Searchpage() {
           />
 
          {imageFilterUsed? <div style={{ display: "flex", alignItems: "center",marginLeft:"-2px",marginTop:"-0.7rem",marginBottom:"1.1rem",cursor: "pointer" }} onClick={handleImageToggleDiv}>
-  {/* <Switch
-    onChange={handleImageToggleChange}
-    checked={toggleActive}
-    className="react-switch"
-    height={18}
-    width={36}
-    onColor="#0B6AFF"
-  /> */}
+
 
 <input
   type="checkbox"
