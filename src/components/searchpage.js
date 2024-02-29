@@ -289,26 +289,25 @@ function Searchpage() {
            
           />
 
-         {imageFilterUsed? <div style={{ display: "flex", alignItems: "center",marginLeft:"-2px",marginTop:"-0.7rem",marginBottom:"1.1rem",cursor: "pointer" }} onClick={handleImageToggleDiv}>
-
+{imageFilterUsed? <div style={{ display: "flex", alignItems: "center",marginLeft:"-2px",marginTop:"-0.7rem",marginBottom:"1.1rem",cursor: "pointer",outline: "none" }} onClick={handleImageToggleDiv}>
 
 <input
   type="checkbox"
+  className="checkbox-toggle"
   checked={toggleActive}
   onChange={handleImageToggleChange}
   style={{
     color:"#0B6AFF",
     width: "1.12rem",
-    height: "1.12rem",
-    borderRadius: "0.05rem",
+    height: "1.13rem",
     position: "relative",
-    cursor: "pointer"
-    
+    cursor: "pointer",
+    outline: "none",
   }}
 />
 
       
-  <label id="imageToggleLabel" style={{  marginLeft: "5px", textAlign: "center",  userSelect: "none" }}>
+<label id="imageToggleLabel" style={{  marginLeft: "5px", textAlign: "center",  userSelect: "none" }}>
     hide tiny images
   </label>
     </div>
@@ -394,7 +393,7 @@ function Searchpage() {
                 <input
                   type="checkbox"
                   checked={allMatch}
-                  style={{ width: "19px", height: "19px", marginLeft: "10px", marginRight: "5px",cursor: "pointer" }}
+                  style={{ width: "19px", height: "19px", marginLeft: "10px", marginRight: "5px",cursor: "pointer" ,outline: "none"}}
                   onChange={handleAllMatchChange}
                 />
                 <label htmlFor="allMatch" style={{ marginBottom: "2px", marginRight: "10px",cursor: "pointer" }}>Match All Terms</label>
@@ -402,7 +401,7 @@ function Searchpage() {
                 <input
                   type="checkbox"
                   checked={phraseMatch}
-                  style={{ width: "19px", height: "19px", marginLeft: "1px", marginRight: "5px",cursor: "pointer" }}
+                  style={{ width: "19px", height: "19px", marginLeft: "1px", marginRight: "5px",cursor: "pointer",outline: "none" }}
                   onChange={handlePhraseMatchChange}
                 />
 
