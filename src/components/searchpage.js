@@ -14,7 +14,7 @@ import ImageTab from "./imageTab";
 
 
 function Searchpage() {
-  const [numberOfResult,setNumberOfResult] = useState(8);
+  const [numberOfResult,setNumberOfResult] = useState(10);
   const indexname = process.env.REACT_APP_INDEX_NAME;
   const [fuzzinessval,setFuzzinessval]=useState(2);
   const [queryFormatval,setQueryFormatval]=useState("or");
@@ -51,12 +51,12 @@ function Searchpage() {
       }
       else{
         setImageFilterUsed(false);
-        updatenumberOfResult(8);
+        updatenumberOfResult(10);
       }
     }
     else{
       setImageFilterUsed(false);
-      updatenumberOfResult(8);
+      updatenumberOfResult(10);
     }
   }
 
@@ -274,9 +274,8 @@ function Searchpage() {
             componentId="filetypefilter"
             dataField="filetype"
             title="Filter by File Type"
-            // onChange={filetypeChange}
             showCount={viewCount}
-            size={4}
+            size={7}
             react={{
               and: ["searchbox", "sizefilter","baseurlfilter","filetypefilter"]
             }}
@@ -320,7 +319,7 @@ function Searchpage() {
             dataField="baseurl"
             title="Filter by Website"
             fielddata={true}
-            size={4}
+            size={100}
             showCount={viewCount}
            
             react={{
@@ -364,13 +363,11 @@ function Searchpage() {
            customQuery={customQueryfn}
             fuzziness={fuzzinessval}
             queryFormat={queryFormatval}
-            //autosuggest={false}
+            autosuggest={true}
             componentId="searchbox"
             dataField={[
               "title",
-              //"title.autosuggest",
               "filedetails",
-              // "fileDetails.autosuggest"
               "artists",
               "album",
               "imgtags",
