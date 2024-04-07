@@ -7,59 +7,46 @@
   /* box-shadow: none !important; */
   border-radius: 20px !important;
 }
-.css-1tj39sd-Input-Input{
+.css-1tj39sd-Input-Input {
   border-radius: 20px !important;
-  
 }
 .css-18kg64w-Input-Input {
   border-radius: 20px !important;
 }
 
-.css-1kfwsuu-resultStats{
+.css-1kfwsuu-resultStats {
   padding-left: 10px;
   padding-bottom: 20px;
 }
 
-
 .css-1bd5zqh-Checkbox-vh + label > span > span:first-of-type {
   padding-right: 5px;
-
 }
-.css-15g0dol-Base *, .css-15g0dol-Base ::before, .css-15g0dol-Base ::after {
+.css-15g0dol-Base *,
+.css-15g0dol-Base ::before,
+.css-15g0dol-Base ::after {
   box-sizing: border-box;
-  
-
 }
-
 
 /* checkbox and radio button color  */
 .css-1bd5zqh-Checkbox-vh + label > span {
   line-height: 1.3rem;
-  
-
 }
 
 .css-1bd5zqh-Checkbox-vh + label:hover {
-  
-  color:rgb(62, 169, 230)  !important;
-
+  color: rgb(62, 169, 230) !important;
 }
 
-.css-1bd5zqh-Checkbox-vh :hover{
-  color: rgb(62, 169, 230) !important
+.css-1bd5zqh-Checkbox-vh :hover {
+  color: rgb(62, 169, 230) !important;
 }
 .css-1bd5zqh-Checkbox + label :hover {
-  
-  color:rgb(62, 169, 230)  !important;
-
+  color: rgb(62, 169, 230) !important;
 }
 
 .css-9d37m9-Radio-vh + label:hover {
-  color:rgb(62, 169, 230)  !important;
+  color: rgb(62, 169, 230) !important;
 }
-
-
-
 
 /* input[type=checkbox]:active {
   color:rgb(62, 169, 230) !important;
@@ -69,37 +56,30 @@
   color:red;
 } */
 
- #imageToggleLabel:hover {
-  color:rgb(62, 169, 230) !important;
+#imageToggleLabel:hover {
+  color: rgb(62, 169, 230) !important;
   cursor: pointer;
-} 
-
-
+}
 
 /* search icon color */
-.css-s7e34l-IconWrapper svg, .css-s7e34l-IconWrapper svg g#el_D93PK3GbmJ {
-  fill: rgb(62, 169, 230)  !important;;
+.css-s7e34l-IconWrapper svg,
+.css-s7e34l-IconWrapper svg g#el_D93PK3GbmJ {
+  fill: rgb(62, 169, 230) !important;
 }
 
 .css-1w1pnf0-UL {
   list-style: none;
-
 }
 
-
-
-.searchdiv{
-  padding-left:10px;
-  flex:1;
-  
+.searchdiv {
+  padding-left: 10px;
+  flex: 1;
 }
 
 .ReactGridGallery_tile-bottom-bar {
   margin-bottom: 0px;
-  
   padding-bottom: 0px;
 }
-
 
 .custom-overlay__caption {
   background-color: rgba(0, 0, 0, 0.8);
@@ -114,26 +94,56 @@
 }
 
 .tabs {
-  
-  flex:1;
-  flex-direction:column;
+  flex: 1;
+  flex-direction: column;
   margin-bottom: 1rem !important;
 }
 
 .tabcomponent {
-  margin:5px;
+  margin: 5px;
   padding-right: 10px;
   text-decoration: none;
   font-size: larger;
-  color:#424242;
+  color: #424242;
 }
 
 .active-tab {
-  color:rgb(62, 169, 230) !important;
-  
+  color: rgb(62, 169, 230) !important;
+}
+/* Style the list container */
+.list-container {
+  max-height: 8rem !important; /* Set a fixed height for demonstration */
+  overflow-y: auto; /* Enable vertical scrollbar */
 }
 
+/* Style the scrollbar */
+.list-container {
+  scrollbar-width: none; /* Firefox 64+ */
+}
 
+/* Track */
+.list-container::-webkit-scrollbar-track,
+.list-container {
+  scrollbar-color: #f1f1f1 transparent; /* Firefox 64+ */
+}
+
+/* Handle */
+.list-container::-webkit-scrollbar-thumb,
+.list-container {
+  scrollbar-color: #888 transparent; /* Firefox 64+ */
+}
+
+/* Handle on hover */
+.list-container::-webkit-scrollbar-thumb:hover,
+.list-container {
+  scrollbar-color: #555 transparent; /* Firefox 64+ */
+}
+
+.baseurlfiltertitle {
+  padding-top: 15px !important;
+}
+
+.sizefiltertitle {
+  padding-top: 4px !important;
+}
 /* checkbox */
-
-
