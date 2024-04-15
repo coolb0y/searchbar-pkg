@@ -273,7 +273,6 @@ function Searchpage() {
                   const sortedArray = filetypefield.sort(
                     (a, b) => keyOrder[a.key] - keyOrder[b.key]
                   );
-
                   return sortedArray;
                 }}
                 // onChange={filetypeChange}
@@ -591,7 +590,7 @@ function Searchpage() {
               }}
               style={{ textAlign: "left" }}
               render={({ data }) => {
-                
+
                 // console.log(data)
                 if (!imageFilterUsed) {
                   return (
