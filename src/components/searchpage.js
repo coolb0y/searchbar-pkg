@@ -261,7 +261,7 @@ function Searchpage() {
                 title="Filter by File Type"
                 transformData={(filetypefield) => {
                   const keyOrder = {
-                    html: 1,
+                    webpage: 1,
                     image: 2,
                     pdf: 3,
                     video: 4,
@@ -591,6 +591,7 @@ function Searchpage() {
               }}
               style={{ textAlign: "left" }}
               render={({ data }) => {
+                
                 // console.log(data)
                 if (!imageFilterUsed) {
                   return (
