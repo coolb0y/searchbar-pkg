@@ -147,3 +147,9 @@
   padding-top: 4px !important;
 }
 /* checkbox */
+
+.videoplayarea{
+  height: 8rem;
+  width: 16rem;
+  margin-bottom: 5rem;
+}

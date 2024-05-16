@@ -10,6 +10,7 @@ import {
 } from "@appbaseio/reactivesearch";
 import "./styles.css";
 import ImageTab from "./imageTab";
+import VideoTab from "./videoTab";
 
 function Searchpage() {
   const [numberOfResult, setNumberOfResult] = useState(8);
@@ -24,6 +25,7 @@ function Searchpage() {
   const [nextWord, setNextWord] = useState("");
   const [searchText, setSearchText] = useState("");
   const [imageFilterUsed, setImageFilterUsed] = useState(false);
+  const [videoFilterUsed, setVideoFilterUsed] = useState(false);
   const [toggleActive, setToggleActive] = useState(true);
 
   useEffect(() => {
@@ -35,10 +37,12 @@ function Searchpage() {
   }, [searchText]);
 
   const handleFilterChange = (filter) => {
-    // console.log(filter.filetypefilter?filter.filetypefilter.value:null,'change filter');
     if (filter && filter.filetypefilter && filter.filetypefilter.value) {
       if (filter.filetypefilter.value.includes("image")) {
         setImageFilterUsed(true);
+      } else if (filter.filetypefilter.value.includes("video")) {
+        console.log("video filter used");
+        setVideoFilterUsed(true);
       } else {
         setImageFilterUsed(false);
         updatenumberOfResult(8);
@@ -63,12 +67,11 @@ function Searchpage() {
 
   const handleAllMatchChange = () => {
     setAllMatch(!allMatch);
-    console.log(allMatch);
+
     if (allMatch) {
       setFuzzinessval(3);
       setQueryFormatval("or");
     } else if (!allMatch) {
-      //console.log(allMatch,'All Match fn1')
       setFuzzinessval(0);
       setQueryFormatval("and");
     }
@@ -76,7 +79,6 @@ function Searchpage() {
 
   const handlePhraseMatchChange = (event) => {
     setPhraseMatch(event.target.checked);
-    //  console.log(phraseMatch,'phraseMatch fn')
   };
 
   const handleImageToggleChange = () => {
@@ -88,7 +90,6 @@ function Searchpage() {
   };
 
   const customQueryfn = (value, props) => {
-    //console.log(value,'value');
     let sortterm = value;
     const words = value.trim().split(/\s+/);
     const maxWords = 25;
@@ -97,7 +98,7 @@ function Searchpage() {
       const truncatedValue = words.slice(0, maxWords).join(" ");
       setSplitDone(true);
       const thirtyThirdWord = words[maxWords];
-      //console.log(thirtyThirdWord,'thirdy third word');
+
       setNextWord(thirtyThirdWord);
       setSearchText(truncatedValue);
     } else {
@@ -138,7 +139,7 @@ function Searchpage() {
         };
       } else {
         // Use the default query
-        // console.log("default query match",phraseMatch)
+
         return {
           query: {
             bool: {
@@ -590,9 +591,8 @@ function Searchpage() {
               }}
               style={{ textAlign: "left" }}
               render={({ data }) => {
-
                 // console.log(data)
-                if (!imageFilterUsed) {
+                if (!imageFilterUsed && !videoFilterUsed) {
                   return (
                     <ReactiveList.ResultListWrapper>
                       {data.map((item, index) => {
@@ -649,6 +649,8 @@ function Searchpage() {
                       updateResult={updatenumberOfResult}
                     />
                   );
+                } else if (videoFilterUsed) {
+                  return <VideoTab data={data} />;
                 }
               }}
             />
