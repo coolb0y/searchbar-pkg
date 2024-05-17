@@ -1,9 +1,19 @@
 import React from "react";
-import VideoComponent from "./videoComponent"; // Import the component you want to copy
+// import VideoComponent from "./videoComponent"; // Import the component you want to copy
+import {
+  ReactiveList,
+  ResultList,
+} from "@appbaseio/reactivesearch";
 
 function VideoTab(props) {
   const { data } = props;
- 
+  function generateLinkString(url) {
+    const parts = url.split("/");
+    const domain = parts[2];
+    const pathParts = parts.slice(3).map((part) => part.split(".")[0]);
+    const formattedURL = `${domain} > ${pathParts.join(" > ")}`;
+    return formattedURL;
+  }
   // useEffect(() => {
   //   const transformedData = [];
 
@@ -26,13 +36,61 @@ function VideoTab(props) {
 
   //   setImages(transformedData);
   // }, [data, toggleActive]);
+  // return (
+  //   <div className="video-tab">
+  //     {data.map((item, index) => (
+  //       <VideoComponent key={index} data={item} />
+  //     ))}
+  //   </div>
+  // );
   return (
-    <div className="video-tab">
-      {data.map((item, index) => (
-        <VideoComponent key={index} data={item} />
-      ))}
-    </div>
-  );
+  <ReactiveList.ResultListWrapper>
+                      {data.map((item, index) => {
+                        let urlnew = generateLinkString(item.url);
+
+                        return (
+                          <ResultList key={item._id}>
+                            <ResultList.Content>
+                              <a
+                                href={item.url}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#3ea9e6",
+                                }}
+                              >
+                                <ResultList.Title
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "#3ea9e6",
+                                  }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: item.title
+                                      ? item.title
+                                      : "No Title Found",
+                                  }}
+                                />
+                                <p
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "#989898",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  {urlnew}
+                                </p>
+                              </a>
+                              <ResultList.Description>
+                                {item.filedetails
+                                  ? item.filedetails.substring(0, 250)
+                                  : ""}
+                              </ResultList.Description>
+                            </ResultList.Content>
+                          </ResultList>
+                        );
+                        // }
+                      })}
+                    </ReactiveList.ResultListWrapper>
+                  );
 }
 
 export default VideoTab;
