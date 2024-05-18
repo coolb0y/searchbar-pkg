@@ -5,11 +5,11 @@ const app = express();
 path.join(__dirname, 'build/images/SearchPageLogo.png');
 path.join(__dirname, 'build/index.html');
 path.join(__dirname, 'build/asset-manifest.json');
-path.join(__dirname, 'build/static/js/main.fe45294c.js');
-path.join(__dirname, 'build/static/js/main.fe45294c.js.map');
-path.join(__dirname, 'build/static/js/main.fe45294c.js.LICENSE.txt');
-path.join(__dirname, 'build/static/css/main.e4121973.css');
-path.join(__dirname, 'build/static/css/main.e4121973.css.map');
+path.join(__dirname, 'build/static/js/main.7120ea38.js');
+path.join(__dirname, 'build/static/js/main.7120ea38.js.map');
+path.join(__dirname, 'build/static/js/main.7120ea38.js.LICENSE.txt');
+path.join(__dirname, 'build/static/css/main.ff1a77e9.css');
+path.join(__dirname, 'build/static/css/main.ff1a77e9.css.map');
 path.join(__dirname, 'build/favicon.png');
 
 app.use(express.static(path.join(__dirname, 'build')));

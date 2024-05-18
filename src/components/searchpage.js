@@ -13,7 +13,7 @@ import ImageTab from "./imageTab";
 import VideoTab from "./videoTab";
 
 function Searchpage() {
-  const [numberOfResult, setNumberOfResult] = useState(8);
+  const [numberOfResult, setNumberOfResult] = useState(25);
   const indexname = process.env.REACT_APP_INDEX_NAME;
   const [fuzzinessval, setFuzzinessval] = useState(2);
   const [queryFormatval, setQueryFormatval] = useState("or");
@@ -45,11 +45,13 @@ function Searchpage() {
         setVideoFilterUsed(true);
       } else {
         setImageFilterUsed(false);
-        updatenumberOfResult(8);
+        setVideoFilterUsed(false);
+        updatenumberOfResult(25);
       }
     } else {
       setImageFilterUsed(false);
-      updatenumberOfResult(8);
+      setVideoFilterUsed(false);
+      updatenumberOfResult(25);
     }
   };
 
@@ -650,7 +652,9 @@ function Searchpage() {
                     />
                   );
                 } else if (videoFilterUsed) {
-                  return <VideoTab data={data} />;
+                  return <VideoTab data={data}
+                    updateResult= {updatenumberOfResult}
+                  />;
                 }
               }}
             />

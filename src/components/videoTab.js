@@ -6,7 +6,10 @@ import {
 } from "@appbaseio/reactivesearch";
 
 function VideoTab(props) {
-  const { data } = props;
+  const { data,updateResult } = props;
+
+  updateResult(45);
+
   function generateLinkString(url) {
     const parts = url.split("/");
     const domain = parts[2];
@@ -14,6 +17,7 @@ function VideoTab(props) {
     const formattedURL = `${domain} > ${pathParts.join(" > ")}`;
     return formattedURL;
   }
+
   // useEffect(() => {
   //   const transformedData = [];
 
