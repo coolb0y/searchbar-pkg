@@ -1,22 +1,20 @@
 import React from "react";
 // import VideoComponent from "./videoComponent"; // Import the component you want to copy
-import {
-  ReactiveList,
-  ResultList,
-} from "@appbaseio/reactivesearch";
+import { ReactiveList, ResultList } from "@appbaseio/reactivesearch";
+import VideoCard from "./videoCard";
 
 function VideoTab(props) {
-  const { data,updateResult } = props;
+  const { data, updateResult } = props;
 
   updateResult(45);
 
-  function generateLinkString(url) {
-    const parts = url.split("/");
-    const domain = parts[2];
-    const pathParts = parts.slice(3).map((part) => part.split(".")[0]);
-    const formattedURL = `${domain} > ${pathParts.join(" > ")}`;
-    return formattedURL;
-  }
+  // function generateLinkString(url) {
+  //   const parts = url.split("/");
+  //   const domain = parts[2];
+  //   const pathParts = parts.slice(3).map((part) => part.split(".")[0]);
+  //   const formattedURL = `${domain} > ${pathParts.join(" > ")}`;
+  //   return formattedURL;
+  // }
 
   // useEffect(() => {
   //   const transformedData = [];
@@ -48,53 +46,54 @@ function VideoTab(props) {
   //   </div>
   // );
   return (
-  <ReactiveList.ResultListWrapper>
-                      {data.map((item, index) => {
-                        let urlnew = generateLinkString(item.url);
+    <ReactiveList.ResultListWrapper>
+      {data.map((item, index) => {
+        //  let urlnew = generateLinkString(item.url);
 
-                        return (
-                          <ResultList key={item._id}>
-                            <ResultList.Content>
-                              <a
-                                href={item.url}
-                                style={{
-                                  textDecoration: "none",
-                                  color: "#3ea9e6",
-                                }}
-                              >
-                                <ResultList.Title
-                                  style={{
-                                    textDecoration: "none",
-                                    color: "#3ea9e6",
-                                  }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: item.title
-                                      ? item.title
-                                      : "No Title Found",
-                                  }}
-                                />
-                                <p
-                                  style={{
-                                    textDecoration: "none",
-                                    color: "#989898",
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  {urlnew}
-                                </p>
-                              </a>
-                              <ResultList.Description>
-                                {item.filedetails
-                                  ? item.filedetails.substring(0, 250)
-                                  : ""}
-                              </ResultList.Description>
-                            </ResultList.Content>
-                          </ResultList>
-                        );
-                        // }
-                      })}
-                    </ReactiveList.ResultListWrapper>
-                  );
+        return (
+          <VideoCard data={item} />
+          // <ResultList key={item._id}>
+          //   <ResultList.Content>
+          //     <a
+          //       href={item.url}
+          //       style={{
+          //         textDecoration: "none",
+          //         color: "#3ea9e6",
+          //       }}
+          //     >
+          //       <ResultList.Title
+          //         style={{
+          //           textDecoration: "none",
+          //           color: "#3ea9e6",
+          //         }}
+          //         dangerouslySetInnerHTML={{
+          //           __html: item.title
+          //             ? item.title
+          //             : "No Title Found",
+          //         }}
+          //       />
+          //       <p
+          //         style={{
+          //           textDecoration: "none",
+          //           color: "#989898",
+          //           fontWeight: "bold",
+          //         }}
+          //       >
+          //         {urlnew}
+          //       </p>
+          //     </a>
+          //     <ResultList.Description>
+          //       {item.filedetails
+          //         ? item.filedetails.substring(0, 250)
+          //         : ""}
+          //     </ResultList.Description>
+          //   </ResultList.Content>
+          // </ResultList>
+        );
+        // }
+      })}
+    </ReactiveList.ResultListWrapper>
+  );
 }
 
 export default VideoTab;
