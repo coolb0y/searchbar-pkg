@@ -13,8 +13,11 @@
   "dependencies": {
     "@appbaseio/reactivesearch": "^3.29.2-preview.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "process": "^0.11.10",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
