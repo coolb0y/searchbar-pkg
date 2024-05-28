@@ -1,15 +1,9 @@
 import React from "react";
-// import VideoComponent from "./videoComponent"; // Import the component you want to copy
 import { ResultList } from "@appbaseio/reactivesearch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlay,
-  faPlay
-} from "@fortawesome/free-solid-svg-icons";
-// Add the icon to the library
+import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 
 function VideoCard(props) {
-  console.log(props.data, "props");
   let video = props.data;
 
   function generateLinkString(url) {
@@ -32,24 +26,27 @@ function VideoCard(props) {
           margin: "0px !important",
         }}
       >
-        <div className="thumbnail-container" style={{ position: "relative", display: "inline-block" }}>
-      <ResultList.Image
-        src={video.thumbnailUrl}
-        style={{ marginTop: "0rem", minWidth: "14rem", padding: "0px" }}
-      />
-      <FontAwesomeIcon
-        icon={faCirclePlay}
-        className="play-icon"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontSize: "2rem", // Adjust the size as needed
-          color: "white", // Adjust the color as needed
-        }}
-      />
-    </div>
+        <div
+          className="thumbnail-container"
+          style={{ position: "relative", display: "inline-block" }}
+        >
+          <ResultList.Image
+            src={video.thumbnailUrl}
+            style={{ marginTop: "0rem", minWidth: "14rem", padding: "0px" }}
+          />
+          <FontAwesomeIcon
+            icon={faCirclePlay}
+            className="play-icon"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              fontSize: "2rem", // Adjust the size as needed
+              color: "white", // Adjust the color as needed
+            }}
+          />
+        </div>
       </a>
 
       <ResultList.Content style={{ marginLeft: "1rem", marginTop: "1rem" }}>
@@ -79,26 +76,34 @@ function VideoCard(props) {
             {urlnew}
           </p>
         </a>
-        { video.duration?
+        {video.duration ? (
           <ResultList.Description>
-           Duration: {(Math.round(video.duration * 100) / 100).toFixed(2) } s
-          </ResultList.Description>:""
-        }
-         { video.album?
+            Duration: {(Math.round(video.duration * 100) / 100).toFixed(2)} s
+          </ResultList.Description>
+        ) : (
+          ""
+        )}
+        {video.album ? (
           <ResultList.Description>
-            Album: {video.album? video.album.substring(0, 100) : ""}
-          </ResultList.Description>:""
-        }
-          { video.artist?
+            Album: {video.album ? video.album.substring(0, 100) : ""}
+          </ResultList.Description>
+        ) : (
+          ""
+        )}
+        {video.artist ? (
           <ResultList.Description>
-            Artist: {video.artist? video.artist.substring(0, 100) : ""}
-          </ResultList.Description>:""
-        }
-         { video.track?
+            Artist: {video.artist ? video.artist.substring(0, 100) : ""}
+          </ResultList.Description>
+        ) : (
+          ""
+        )}
+        {video.track ? (
           <ResultList.Description>
-           Track: {video.track ? video.track.substring(0, 100) : ""}
-          </ResultList.Description>:""
-        }
+            Track: {video.track ? video.track.substring(0, 100) : ""}
+          </ResultList.Description>
+        ) : (
+          ""
+        )}
       </ResultList.Content>
     </ResultList>
   );
