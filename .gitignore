@@ -6,4 +6,5 @@ package-lock.json
 .vscode/
 frontend-linux
 frontend-macos
+frontend-win.exe
 build
