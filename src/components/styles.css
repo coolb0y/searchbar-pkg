@@ -111,11 +111,13 @@
   color: rgb(62, 169, 230) !important;
 }
 
+li {
+  margin-top: -0.42rem;
+}
+
 /* Style the scrollbar */
 
 /* Style the list container */
-
-/* Track */
 .list-container {
   scrollbar-width: none; /* Firefox 64+ */
 
