@@ -110,18 +110,20 @@
 .active-tab {
   color: rgb(62, 169, 230) !important;
 }
+
+/* Style the scrollbar */
+
 /* Style the list container */
+
+/* Track */
 .list-container {
+  scrollbar-width: none; /* Firefox 64+ */
+
   max-height: 8rem !important; /* Set a fixed height for demonstration */
   overflow-y: auto; /* Enable vertical scrollbar */
 }
 
-/* Style the scrollbar */
-.list-container {
-  scrollbar-width: none; /* Firefox 64+ */
-}
 
-/* Track */
 .list-container::-webkit-scrollbar-track,
 .list-container {
   scrollbar-color: #f1f1f1 transparent; /* Firefox 64+ */
@@ -130,13 +132,13 @@
 /* Handle */
 .list-container::-webkit-scrollbar-thumb,
 .list-container {
-  scrollbar-color: #888 transparent; /* Firefox 64+ */
+  scrollbar-color: #888 transparent;
 }
 
 /* Handle on hover */
 .list-container::-webkit-scrollbar-thumb:hover,
 .list-container {
-  scrollbar-color: #555 transparent; /* Firefox 64+ */
+  scrollbar-color: #555 transparent; 
 }
 
 .baseurlfiltertitle {
@@ -153,3 +155,11 @@
   width: 16rem;
   margin-bottom: 5rem;
 }
+
+.filesizefilter-container{
+  margin-top: 0.9rem;
+}
+
+/* .list-container{
+  margin-bottom: -0.42rem !important;
+} */

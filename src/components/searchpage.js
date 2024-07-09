@@ -363,9 +363,7 @@ function Searchpage() {
                 componentId="sizefilter"
                 dataField="filesize"
                 title="Filter by File Size"
-                innerClass={{
-                  title: "sizefiltertitle",
-                }}
+                className="filesizefilter-container"
                 react={{
                   and: [
                     "searchbox",
