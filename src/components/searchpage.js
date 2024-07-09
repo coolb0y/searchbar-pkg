@@ -348,6 +348,7 @@ function Searchpage() {
                 innerClass={{
                   list: "list-container",
                   title: "baseurlfiltertitle",
+                  input: "baseurlfiltersearchfield",
                 }}
                 react={{
                   and: [
