@@ -119,7 +119,7 @@ li {
 
 /* Style the list container */
 .list-container {
-  scrollbar-width: none; /* Firefox 64+ */
+  scrollbar-width: 0.05rem; /* Firefox 64+ */
 
   max-height: 8rem !important; /* Set a fixed height for demonstration */
   overflow-y: auto; /* Enable vertical scrollbar */
