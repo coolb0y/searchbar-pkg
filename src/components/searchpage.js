@@ -262,6 +262,7 @@ function Searchpage() {
                 componentId="filetypefilter"
                 dataField="filetype"
                 title="Filter by File Type"
+                placeholder="Search File Type.."
                 transformData={(filetypefield) => {
                   const keyOrder = {
                     webpage: 1,
@@ -343,6 +344,7 @@ function Searchpage() {
                 title="Filter by Website"
                 fielddata={true}
                 filterLabel="websitefilter"
+                placeholder="Search Website.."
                 // size={4}
                 showCount={viewCount}
                 innerClass={{
