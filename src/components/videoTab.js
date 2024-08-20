@@ -1,12 +1,10 @@
 import React from "react";
 // import VideoComponent from "./videoComponent"; // Import the component you want to copy
-import {
-  ReactiveList,
-  ResultList,
-} from "@appbaseio/reactivesearch";
+import { ReactiveList, ResultList } from "@appbaseio/reactivesearch";
+import VideoCard from "./videoCard";
 
 function VideoTab(props) {
-  const { data,updateResult } = props;
+  const { data, updateResult } = props;
 
   updateResult(45);
 
@@ -48,53 +46,51 @@ function VideoTab(props) {
   //   </div>
   // );
   return (
-  <ReactiveList.ResultListWrapper>
-                      {data.map((item, index) => {
-                        let urlnew = generateLinkString(item.url);
-
-                        return (
-                          <ResultList key={item._id}>
-                            <ResultList.Content>
-                              <a
-                                href={item.url}
-                                style={{
-                                  textDecoration: "none",
-                                  color: "#3ea9e6",
-                                }}
-                              >
-                                <ResultList.Title
-                                  style={{
-                                    textDecoration: "none",
-                                    color: "#3ea9e6",
-                                  }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: item.title
-                                      ? item.title
-                                      : "No Title Found",
-                                  }}
-                                />
-                                <p
-                                  style={{
-                                    textDecoration: "none",
-                                    color: "#989898",
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  {urlnew}
-                                </p>
-                              </a>
-                              <ResultList.Description>
-                                {item.filedetails
-                                  ? item.filedetails.substring(0, 250)
-                                  : ""}
-                              </ResultList.Description>
-                            </ResultList.Content>
-                          </ResultList>
-                        );
-                        // }
-                      })}
-                    </ReactiveList.ResultListWrapper>
-                  );
+    <ReactiveList.ResultListWrapper>
+      {data.map((item, index) => {
+        let urlnew = generateLinkString(item.url);
+        if (item.thumbnailPath) {
+          return <VideoCard data={item} />;
+        } else {
+          return (
+            <ResultList key={item._id}>
+              <ResultList.Content>
+                <a
+                  href={item.url}
+                  style={{
+                    textDecoration: "none",
+                    color: "#3ea9e6",
+                  }}
+                >
+                  <ResultList.Title
+                    style={{
+                      textDecoration: "none",
+                      color: "#3ea9e6",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: item.title ? item.title : "No Title Found",
+                    }}
+                  />
+                  <p
+                    style={{
+                      textDecoration: "none",
+                      color: "#989898",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {urlnew}
+                  </p>
+                </a>
+                <ResultList.Description>
+                  {item.filedetails ? item.filedetails.substring(0, 250) : ""}
+                </ResultList.Description>
+              </ResultList.Content>
+            </ResultList>
+          );
+        }
+      })}
+    </ReactiveList.ResultListWrapper>
+  );
 }
 
 export default VideoTab;
